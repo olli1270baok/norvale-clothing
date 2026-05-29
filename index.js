@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initColorDots();
     initNewsletter();
     setupShopLoadingState();
+    
+    // Start syncing the shopping cart quantity badge
+    setInterval(syncCartCount, 1000);
+    document.addEventListener('click', () => setTimeout(syncCartCount, 200));
 });
 
 /**
@@ -20,7 +24,14 @@ function initNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const targetId = link.getAttribute('data-target');
+            const href = link.getAttribute('href');
+            
             if (targetId) {
+                // If it's a Spreadshop route (starts with #!), let the hash change naturally
+                if (href && href.startsWith('#!')) {
+                    return;
+                }
+                
                 // If it's an internal link, prevent default href behavior
                 e.preventDefault();
                 navigateToView(targetId);
@@ -277,3 +288,67 @@ function setupShopLoadingState() {
         }
     }
 }
+
+/**
+ * Sync custom basket quantity badge with Spreadshop's internal state
+ */
+function syncCartCount() {
+    const shopContainer = document.getElementById('myShop');
+    if (!shopContainer) return;
+    
+    const customBadge = document.querySelector('.bag-count');
+    if (!customBadge) return;
+    
+    // Selectors for finding Spreadshop's quantity badges in the DOM
+    const selectors = [
+        '[class*="basket-amount"]',
+        '[class*="basket-count"]',
+        '[class*="cart-count"]',
+        '[class*="quantity-badge"]',
+        '.sprd-basket-amount',
+        '.sprd-basket-quantity',
+        '.sprd-cart-count'
+    ];
+    
+    let quantityText = '';
+    for (let selector of selectors) {
+        const el = shopContainer.querySelector(selector);
+        if (el) {
+            const text = el.textContent.trim().replace(/\D/g, '');
+            if (text !== '') {
+                quantityText = text;
+                break;
+            }
+        }
+    }
+    
+    // Fallback: search for numbers inside links or buttons pointing to the basket
+    if (quantityText === '') {
+        const cartLinks = shopContainer.querySelectorAll('a[href*="basket"], a[href*="cart"], button[class*="basket"], button[class*="cart"]');
+        for (let link of cartLinks) {
+            const badge = link.querySelector('[class*="badge"], [class*="count"], [class*="amount"]');
+            if (badge) {
+                const text = badge.textContent.trim().replace(/\D/g, '');
+                if (text !== '') {
+                    quantityText = text;
+                    break;
+                }
+            } else {
+                const text = link.textContent.trim().replace(/\D/g, '');
+                if (text !== '' && text.length <= 2) {
+                    quantityText = text;
+                    break;
+                }
+            }
+        }
+    }
+    
+    // Update parent badge
+    if (quantityText !== '') {
+        customBadge.textContent = quantityText;
+        customBadge.style.display = 'flex';
+    } else {
+        customBadge.textContent = '0';
+    }
+}
+
