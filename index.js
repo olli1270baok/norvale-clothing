@@ -26,6 +26,28 @@ function initNavigation() {
     
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('data-target');
+            const href = link.getAttribute('href');
+            
+            if (targetId) {
+                // If it's a Spreadshop route (starts with #!), let the hash change naturally
+                if (href && href.startsWith('#!')) {
+                    return;
+                }
+                
+                // Prevent default hash navigation to prevent Spreadshop script from hijacking
+                e.preventDefault();
+                navigateToView(targetId);
+                
+                // If it's a legal page link, switch to the correct tab directly
+                if (targetId === 'legal-view' && href) {
+                    const tabName = href.replace('#', '');
+                    if (tabName === 'imprint' || tabName === 'privacy' || tabName === 'terms') {
+                        switchLegalTab(tabName);
+                    }
+                }
+            }
+            
             // Close mobile menu if open
             const drawer = document.querySelector('.mobile-nav-drawer');
             const toggle = document.querySelector('.mobile-menu-toggle');
@@ -52,23 +74,23 @@ function handleUrlHash() {
     const activeView = document.querySelector('.view.active');
     const activeViewId = activeView ? activeView.id : '';
 
-    if (hash === '#collections') {
+    if (hash === '#collections' || hash === '#!/collections') {
         navigateToView('collections-view');
-    } else if (hash === '#about') {
+    } else if (hash === '#about' || hash === '#!/about') {
         navigateToView('about-view');
-    } else if (hash === '#home') {
+    } else if (hash === '#home' || hash === '#!/home') {
         navigateToView('home-view');
-    } else if (hash === '#shop' || hash.startsWith('#!')) {
-        navigateToView('shop-view');
-    } else if (hash === '#imprint') {
+    } else if (hash === '#imprint' || hash === '#!/imprint') {
         navigateToView('legal-view');
         switchLegalTab('imprint');
-    } else if (hash === '#privacy') {
+    } else if (hash === '#privacy' || hash === '#!/privacy') {
         navigateToView('legal-view');
         switchLegalTab('privacy');
-    } else if (hash === '#terms') {
+    } else if (hash === '#terms' || hash === '#!/terms') {
         navigateToView('legal-view');
         switchLegalTab('terms');
+    } else if (hash === '#shop' || hash.startsWith('#!')) {
+        navigateToView('shop-view');
     } else if (hash === '' || hash === '#') {
         // Only default to home on initial load or if we are already on home.
         // Prevents Spreadshop state resets from kicking the user back to the home screen.
