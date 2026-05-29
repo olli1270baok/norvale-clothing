@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNewsletter();
     setupShopLoadingState();
     loadBestsellers();
+    initLegalTabs();
     
     // Start syncing the shopping cart quantity badge
     setInterval(syncCartCount, 1000);
@@ -59,6 +60,15 @@ function handleUrlHash() {
         navigateToView('home-view');
     } else if (hash === '#shop' || hash.startsWith('#!')) {
         navigateToView('shop-view');
+    } else if (hash === '#imprint') {
+        navigateToView('legal-view');
+        switchLegalTab('imprint');
+    } else if (hash === '#privacy') {
+        navigateToView('legal-view');
+        switchLegalTab('privacy');
+    } else if (hash === '#terms') {
+        navigateToView('legal-view');
+        switchLegalTab('terms');
     } else if (hash === '' || hash === '#') {
         // Only default to home on initial load or if we are already on home.
         // Prevents Spreadshop state resets from kicking the user back to the home screen.
@@ -559,7 +569,13 @@ const translations = {
         footer_copyright: "&copy; 2026 nørvale clothing. Alle Rechte vorbehalten.",
         footer_privacy: "Datenschutz",
         footer_terms: "AGB",
-        footer_imprint: "Impressum"
+        footer_imprint: "Impressum",
+        legal_tab_imprint: "Impressum",
+        legal_tab_privacy: "Datenschutz",
+        legal_tab_terms: "AGB",
+        legal_imprint_content: `<h2>Impressum</h2><p><strong>Nørvale Clothing / baokmedia</strong></p><p>c/o Impressumservice Dein-Impressum<br>Stettiner Straße 41<br>35410 Hungen</p><p><strong>Vertreten durch:</strong><br>O. Balko</p><p><strong>Kontakt:</strong><br>E-Mail: olli1270@gmail.com</p><p><strong>Haftungshinweis:</strong><br>Wir sind für die Inhalte unserer eigenen Seiten nach den allgemeinen Gesetzen verantwortlich. Alle Kaufverträge, Lieferungen und Kundenservice-Angelegenheiten der Spreadshop-Kollektionen werden ausschließlich von der sprd.net AG (Spreadshirt) abgewickelt.</p><p><strong>Online-Streitbeilegung (OS):</strong><br>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie unter <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a> finden. Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>`,
+        legal_privacy_content: `<h2>Datenschutzerklärung</h2><h3>1. Datenschutz auf einen Blick</h3><p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten auf unserer Landingpage und dem eingebetteten Spreadshop-Bereich auf.</p><h3>2. Hosting durch Vercel</h3><p>Wir hosten unsere Website bei Vercel (Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA). Zur Bereitstellung der Website erfasst Vercel automatisiert Server-Logfiles (IP-Adresse, Browsertyp, Referrer-URL, Uhrzeit). Dies erfolgt auf Grundlage unserer berechtigten Interessen an einem sicheren und effizienten Betrieb unserer Website (Art. 6 Abs. 1 lit. f DSGVO).</p><h3>3. Eingebetteter Spreadshop (sprd.net AG)</h3><p>Auf dieser Website ist ein Online-Shop eingebettet, der technisch und rechtlich von der <strong>sprd.net AG (Spreadshirt)</strong>, Gießerstraße 27, 04229 Leipzig, Deutschland, betrieben wird. Wenn Sie den Shop-Bereich aufrufen oder eine Bestellung tätigen, verarbeitet Spreadshirt Ihre Daten (inkl. IP-Adresse, Browser-Details, Cookies und Bestelldaten) eigenverantwortlich für die Zahlungsabwicklung, Produktion und Lieferung. Weitere Informationen finden Sie in der <a href="https://www.spreadshirt.de/datenschutz-C3858" target="_blank">Datenschutzerklärung von Spreadshirt</a>.</p><h3>4. Lokaler Speicher (LocalStorage)</h3><p>Wir speichern Ihre ausgewählte Sprache (DE/EN) in Ihrem Browser (LocalStorage), um Ihnen die Seite beim nächsten Aufruf direkt in Ihrer Wunschsprache anzuzeigen. Dies stellt ein berechtigtes Interesse dar (Art. 6 Abs. 1 lit. f DSGVO).</p>`,
+        legal_terms_content: `<h2>Allgemeine Geschäftsbedingungen (AGB)</h2><h3>1. Geltungsbereich</h3><p>Diese Bedingungen gelten für die Nutzung der Landingpage nørvaleclothing.store. Für Bestellungen im Online-Shop gelten gesonderte Bedingungen.</p><h3>2. Vertragspartner für Bestellungen</h3><p>Alle Verträge, Lieferungen und Serviceleistungen, die über den auf dieser Website eingebetteten Online-Shop getätigt werden, kommen ausschließlich zwischen dem Besteller und der <strong>sprd.net AG (Spreadshirt)</strong>, Gießerstraße 27, 04229 Leipzig, Deutschland zustande. Es gelten die allgemeinen Geschäftsbedingungen und Widerrufsbelehrungen von sprd.net AG, die im integrierten Shop-Widget einsehbar sind.</p><h3>3. Haftungsbeschränkung für Inhalte</h3><p>Wir erstellen die redaktionellen Inhalte dieser Landingpage mit größter Sorgfalt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte von verlinkten Spreadshirt-Produkten oder Preisen können wir jedoch keine Gewähr übernehmen, da diese direkt und dynamisch von Spreadshirt bereitgestellt werden.</p>`
     },
     en: {
         announcement: "Free shipping on all orders over 150 €",
@@ -639,7 +655,13 @@ const translations = {
         footer_copyright: "&copy; 2026 nørvale clothing. All rights reserved.",
         footer_privacy: "Privacy Policy",
         footer_terms: "Terms & Conditions",
-        footer_imprint: "Imprint"
+        footer_imprint: "Imprint",
+        legal_tab_imprint: "Imprint",
+        legal_tab_privacy: "Privacy Policy",
+        legal_tab_terms: "Terms & Conditions",
+        legal_imprint_content: `<h2>Imprint</h2><p><strong>Nørvale Clothing / baokmedia</strong></p><p>c/o Impressumservice Dein-Impressum<br>Stettiner Straße 41<br>35410 Hungen</p><p><strong>Represented by:</strong><br>O. Balko</p><p><strong>Contact:</strong><br>Email: olli1270@gmail.com</p><p><strong>Disclaimer:</strong><br>We are responsible for the content of our own pages according to general laws. All sales contracts, deliveries, and customer service inquiries regarding the Spreadshop collections are handled exclusively by sprd.net AG (Spreadshirt).</p><p><strong>Online Dispute Resolution (ODR):</strong><br>The European Commission provides a platform for online dispute resolution (ODR), which can be found at <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>. We are neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>`,
+        legal_privacy_content: `<h2>Privacy Policy</h2><h3>1. Privacy at a Glance</h3><p>This privacy policy explains the nature, scope, and purpose of the processing of personal data on our landing page and the embedded Spreadshop section.</p><h3>2. Hosting by Vercel</h3><p>We host our website with Vercel (Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA). To deliver the website, Vercel automatically collects server log files (IP address, browser type, referrer URL, timestamp). This is based on our legitimate interests in operating our website securely and efficiently (Art. 6 para. 1 lit. f GDPR).</p><h3>3. Embedded Spreadshop (sprd.net AG)</h3><p>An online shop is embedded on this website, which is technically and legally operated by <strong>sprd.net AG (Spreadshirt)</strong>, Gießerstraße 27, 04229 Leipzig, Germany. When you access the shop section or place an order, Spreadshirt processes your data (including IP address, browser details, cookies, and order information) under its own responsibility for payment processing, production, and delivery. For more details, please view the <a href="https://www.spreadshirt.com/privacy-policy-C3858" target="_blank">Spreadshirt Privacy Policy</a>.</p><h3>4. Local Storage</h3><p>We store your selected language (DE/EN) in your browser's LocalStorage to display the site in your preferred language upon your next visit. This constitutes a legitimate interest (Art. 6 para. 1 lit. f GDPR).</p>`,
+        legal_terms_content: `<h2>Terms & Conditions (AGB)</h2><h3>1. Scope of Application</h3><p>These terms apply to the use of the landing page nørvaleclothing.store. Separate terms apply to orders placed in the online shop.</p><h3>2. Contractual Partner for Orders</h3><p>All contracts, deliveries, and services placed via the online shop embedded on this website are established exclusively between the customer and <strong>sprd.net AG (Spreadshirt)</strong>, Gießerstraße 27, 04229 Leipzig, Germany. The terms and conditions and cancellation policy of sprd.net AG apply, which can be viewed inside the integrated shop widget.</p><h3>3. Limitation of Liability for Content</h3><p>We create the editorial content of this landing page with the utmost care. However, we cannot assume liability for the accuracy, completeness, or timeliness of prices or product details, as they are provided dynamically by Spreadshirt.</p>`
     }
 };
 
@@ -768,5 +790,48 @@ function reloadSpreadshop(lang) {
     // Trigger shop loading check
     setupShopLoadingState();
 }
+
+/**
+ * Initialize Legal Tab Click Event Handlers
+ */
+function initLegalTabs() {
+    const tabButtons = document.querySelectorAll('.legal-tab-btn');
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const section = btn.getAttribute('data-legal-section');
+            if (section) {
+                window.location.hash = `#${section}`;
+            }
+        });
+    });
+}
+window.initLegalTabs = initLegalTabs;
+
+/**
+ * Switch Active Legal Section Tab & Content Panel
+ */
+function switchLegalTab(tabName) {
+    const tabButtons = document.querySelectorAll('.legal-tab-btn');
+    const contentPanels = document.querySelectorAll('.legal-section-content');
+    
+    // Toggle active state for tab buttons
+    tabButtons.forEach(btn => {
+        if (btn.getAttribute('data-legal-section') === tabName) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Toggle active state for content panels
+    contentPanels.forEach(panel => {
+        if (panel.id === `legal-section-${tabName}`) {
+            panel.classList.add('active');
+        } else {
+            panel.classList.remove('active');
+        }
+    });
+}
+window.switchLegalTab = switchLegalTab;
 
 

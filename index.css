@@ -1379,3 +1379,116 @@ blockquote {
 .sprd-header, .sprd-footer {
     display: none !important; /* Hide defaults if they compete with our layout */
 }
+
+/* --- Legal Section Styling --- */
+.legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+}
+
+.legal-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.legal-tab-btn {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transition-fast);
+}
+
+.legal-tab-btn:hover {
+    color: var(--color-text-primary);
+}
+
+.legal-tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1.6rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transition: var(--transition-fast);
+}
+
+.legal-tab-btn.active {
+    color: var(--color-text-primary);
+}
+
+.legal-tab-btn.active::after {
+    transform: scaleX(1);
+}
+
+.legal-section-content {
+    display: none;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+}
+
+.legal-section-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.legal-section-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.legal-section-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.legal-section-content p {
+    margin-bottom: 1.2rem;
+}
+
+.legal-section-content strong {
+    color: var(--color-text-primary);
+}
+
+.legal-section-content a {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+}
+
+.legal-section-content a:hover {
+    color: var(--color-accent);
+}
+
+.legal-section-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    list-style-type: square;
+}
+
+.legal-section-content li {
+    margin-bottom: 0.5rem;
+}
+
