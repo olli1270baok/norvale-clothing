@@ -43,18 +43,26 @@ function initNavigation() {
 
 function handleUrlHash() {
     const hash = window.location.hash;
-    if (hash === '#shop') {
+    if (hash === '#shop' || hash.startsWith('#!')) {
         navigateToView('shop-view');
     } else if (hash === '#collections') {
         navigateToView('collections-view');
     } else if (hash === '#about') {
         navigateToView('about-view');
-    } else {
+    } else if (hash === '#home' || hash === '') {
         navigateToView('home-view');
     }
 }
 
 function navigateToView(viewId) {
+    const targetView = document.getElementById(viewId);
+    if (!targetView) return;
+
+    // If the requested view is already active, don't perform transitions or scroll back to top
+    if (targetView.classList.contains('active')) {
+        return;
+    }
+
     const views = document.querySelectorAll('.view');
     const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
     
@@ -64,13 +72,11 @@ function navigateToView(viewId) {
     });
     
     // Show target view
-    const targetView = document.getElementById(viewId);
-    if (targetView) {
-        targetView.classList.add('active');
-        // Trigger a redraw/scroll for Spreadshop container if it is active
-        if (viewId === 'shop-view') {
-            window.dispatchEvent(new Event('resize'));
-        }
+    targetView.classList.add('active');
+    
+    // Trigger a redraw/scroll for Spreadshop container if it is active
+    if (viewId === 'shop-view') {
+        window.dispatchEvent(new Event('resize'));
     }
     
     // Update active nav link classes
@@ -83,7 +89,7 @@ function navigateToView(viewId) {
         }
     });
 
-    // Scroll to top smoothly
+    // Scroll to top smoothly when switching between main sections
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
