@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nørvale | Nordic by Nature. Made to Last.</title>
+    <meta name="description" content="Timeless design. Honest materials. Apparel inspired by the North. Discover nørvale's collection of premium, organic clothing.">
+    
+    <!-- Google Fonts: Outfit (modern, geometric) and Inter (clean, readable body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <p>Kostenloser Versand für alle Bestellungen ab 150 €</p>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <!-- Left Navigation -->
+            <nav class="nav-left">
+                <a href="#home" class="nav-link active" data-target="home-view">Home</a>
+                <a href="#shop" class="nav-link" data-target="shop-view">Shop</a>
+                <a href="#collections" class="nav-link" data-target="collections-view">Kollektionen</a>
+                <a href="#about" class="nav-link" data-target="about-view">Über uns</a>
+            </nav>
+
+            <!-- Center Logo -->
+            <div class="logo-container">
+                <a href="#home" class="logo" data-target="home-view">nørvale</a>
+            </div>
+
+            <!-- Right Utilities -->
+            <div class="nav-right">
+                <button class="icon-btn search-toggle" aria-label="Suche">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <a href="#shop" class="icon-btn" aria-label="Konto" data-target="shop-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+                <a href="#shop" class="icon-btn bag-btn" aria-label="Warenkorb" data-target="shop-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="bag-count">0</span>
+                </a>
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer">
+        <nav class="mobile-nav">
+            <a href="#home" class="mobile-nav-link active" data-target="home-view">Home</a>
+            <a href="#shop" class="mobile-nav-link" data-target="shop-view">Shop</a>
+            <a href="#collections" class="mobile-nav-link" data-target="collections-view">Kollektionen</a>
+            <a href="#about" class="mobile-nav-link" data-target="about-view">Über uns</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+        <!-- 1. HOME VIEW -->
+        <section id="home-view" class="view active">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-image-wrapper">
+                    <img src="assets/hero_scenery.png" alt="Nordische Landschaft und Minimal-T-Shirt" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <p class="hero-subtitle-tag">Nordic by Nature</p>
+                    <h1 class="hero-title">MADE TO LAST.</h1>
+                    <p class="hero-description">Zeitloses Design. Nachhaltige Materialien. Kleidung inspiriert von der rauen Schönheit des Nordens.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="navigateToView('shop-view')">Kollektion Entdecken</button>
+                        <button class="btn btn-secondary" onclick="navigateToView('about-view')">Unsere Story</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Grid -->
+            <section class="section categories-section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-tag">Kategorien</span>
+                        <h2 class="section-title">Kollektionen durchstöbern</h2>
+                    </div>
+                    <div class="categories-grid">
+                        <!-- T-Shirts -->
+                        <div class="category-card" onclick="navigateToShopCategory('t-shirts')">
+                            <div class="card-img-wrapper">
+                                <img src="assets/cat_tshirt.png" alt="nørvale T-Shirts" class="card-image">
+                            </div>
+                            <div class="card-content">
+                                <h3>T-Shirts</h3>
+                                <p>Clean. Komfortabel. Essenziell.</p>
+                                <span class="card-link">Jetzt Shoppen</span>
+                            </div>
+                        </div>
+
+                        <!-- Hoodies -->
+                        <div class="category-card" onclick="navigateToShopCategory('hoodies')">
+                            <div class="card-img-wrapper">
+                                <img src="assets/cat_hoodie.png" alt="nørvale Hoodies" class="card-image">
+                            </div>
+                            <div class="card-content">
+                                <h3>Hoodies</h3>
+                                <p>Für Komfort gebaut. Gemacht für Beständigkeit.</p>
+                                <span class="card-link">Jetzt Shoppen</span>
+                            </div>
+                        </div>
+
+                        <!-- Accessories -->
+                        <div class="category-card" onclick="navigateToShopCategory('accessories')">
+                            <div class="card-img-wrapper">
+                                <img src="assets/cat_accessories.png" alt="nørvale Accessoires" class="card-image">
+                            </div>
+                            <div class="card-content">
+                                <h3>Accessoires</h3>
+                                <p>Klare Akzente. Zeitloser Stil.</p>
+                                <span class="card-link">Entdecken</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brand Values Section -->
+            <section class="values-section">
+                <div class="container">
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 22h20L12 2z"></path>
+                                    <path d="M12 2v20"></path>
+                                    <path d="M7 12h10"></path>
+                                </svg>
+                            </div>
+                            <h3>Nordisches Erbe</h3>
+                            <p>Inspiriert von der rauen Natur und der Einfachheit Skandinaviens.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                                    <path d="M12 6v12"></path>
+                                    <path d="M12 10C9.5 10 8 11.5 8 13.5s1.5 3.5 4 4.5"></path>
+                                </svg>
+                            </div>
+                            <h3>Nachhaltigkeit</h3>
+                            <p>Bewusste Materialauswahl und faire Produktionsbedingungen.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M6 3h12l4 6-10 12L2 9z"></path>
+                                    <path d="M11 3v18"></path>
+                                    <path d="M2 9h20"></path>
+                                </svg>
+                            </div>
+                            <h3>Zeitloses Design</h3>
+                            <p>Minimalismus, der sich Modetrends widersetzt und langlebig bleibt.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M2 12h20"></path>
+                                    <path d="M12 2v20"></path>
+                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0 9 9 0 1 0 -18 0"></path>
+                                </svg>
+                            </div>
+                            <h3>Langlebigkeit</h3>
+                            <p>Mit Sorgfalt gefertigt, um Jahre intensiver Nutzung zu überstehen.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Bestsellers Preview -->
+            <section class="section bestsellers-section">
+                <div class="container">
+                    <div class="section-header flex-header">
+                        <div>
+                            <span class="section-tag">Auswahl</span>
+                            <h2 class="section-title">Unsere Bestseller</h2>
+                        </div>
+                        <button class="text-link-btn" onclick="navigateToView('shop-view')">Alle Produkte ansehen →</button>
+                    </div>
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card" onclick="navigateToShopProduct('signature-tshirt')">
+                            <div class="product-img-wrapper">
+                                <img src="assets/cat_tshirt.png" alt="Signature T-Shirt" class="product-image">
+                                <span class="badge">Bestseller</span>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-name">Signature T-Shirt</h3>
+                                <p class="product-price">34,90 €</p>
+                                <div class="product-colors">
+                                    <span class="color-dot active" style="background-color: #d7d0c5;" title="Sand"></span>
+                                    <span class="color-dot" style="background-color: #2b2b2a;" title="Anthrazit"></span>
+                                    <span class="color-dot" style="background-color: #f7f7f7;" title="Off-White"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card" onclick="navigateToShopProduct('essential-hoodie')">
+                            <div class="product-img-wrapper">
+                                <img src="assets/cat_hoodie.png" alt="Atelier Hoodie" class="product-image">
+                                <span class="badge">Premium</span>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-name">Atelier Hoodie</h3>
+                                <p class="product-price">69,90 €</p>
+                                <div class="product-colors">
+                                    <span class="color-dot active" style="background-color: #cfc7bc;" title="Sand"></span>
+                                    <span class="color-dot" style="background-color: #1a1a1a;" title="Schwarz"></span>
+                                    <span class="color-dot" style="background-color: #4a423a;" title="Walnuss"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card" onclick="navigateToShopProduct('nordic-cap')">
+                            <div class="product-img-wrapper">
+                                <img src="assets/cat_accessories.png" alt="Nordic Cap" class="product-image">
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-name">Nordic Cap "N"</h3>
+                                <p class="product-price">24,90 €</p>
+                                <div class="product-colors">
+                                    <span class="color-dot active" style="background-color: #c9c0b3;" title="Beige"></span>
+                                    <span class="color-dot" style="background-color: #2b2b2a;" title="Anthrazit"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brand Quote Banner -->
+            <div class="quote-banner">
+                <div class="quote-bg-wrapper">
+                    <img src="assets/quote_bg.png" alt="Nordische Berge im Nebel" class="quote-bg-image">
+                </div>
+                <div class="quote-content">
+                    <blockquote>"Inspired by the North. Made for anywhere."</blockquote>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. SHOP VIEW (Embedded Spreadshop) -->
+        <section id="shop-view" class="view">
+            <div class="container shop-wrapper">
+                <div class="shop-header">
+                    <span class="section-tag">Offizieller Store</span>
+                    <h2 class="section-title">nørvale Online-Shop</h2>
+                    <p class="shop-intro-text">Bestelle unsere Kollektionen direkt über den eingebetteten Store. Sicher, schnell und direkt geliefert.</p>
+                </div>
+                
+                <!-- Spreadshop Container -->
+                <div class="spreadshop-container-card">
+                    <div id="myShop">
+                        <div class="shop-loading-spinner">
+                            <div class="spinner"></div>
+                            <p>Kollektionen werden geladen...</p>
+                            <a href="https://baokmedia.myspreadshop.de" class="btn btn-secondary">Direkt zu Spreadshop öffnen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3. COLLECTIONS VIEW -->
+        <section id="collections-view" class="view">
+            <div class="container section">
+                <div class="section-header">
+                    <span class="section-tag">Unsere Drops</span>
+                    <h2 class="section-title">Kollektionen</h2>
+                </div>
+                
+                <div class="collections-list">
+                    <!-- Collection 1 -->
+                    <div class="collection-row">
+                        <div class="collection-row-image">
+                            <img src="assets/hero_scenery.png" alt="Essential Collection">
+                        </div>
+                        <div class="collection-row-info">
+                            <span class="row-tag">Neu eingetroffen</span>
+                            <h3>Essential Collection Drop 02</h3>
+                            <p>Erlesene Essentials, designt für Klarheit, Komfort und Bewegung. Gefertigt aus feinster Bio-Baumwolle und mit dezentem Logo-Stick.</p>
+                            <button class="btn btn-primary" onclick="navigateToView('shop-view')">Drop Shoppen</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Collection 2 -->
+                    <div class="collection-row reverse">
+                        <div class="collection-row-image">
+                            <img src="assets/cat_hoodie.png" alt="Nordic Heritage Collection">
+                        </div>
+                        <div class="collection-row-info">
+                            <span class="row-tag">Klassiker</span>
+                            <h3>Nordic Heritage</h3>
+                            <p>Unsere zeitlose Linie, die vom schlichten skandinavischen Lebensstil inspiriert ist. Dauerhaft im Sortiment und die perfekte Basis für jedes Outfit.</p>
+                            <button class="btn btn-secondary" onclick="navigateToView('shop-view')">Kollektion ansehen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 4. ABOUT VIEW -->
+        <section id="about-view" class="view">
+            <div class="container section about-container">
+                <div class="about-grid">
+                    <div class="about-text-content">
+                        <span class="section-tag">Unsere Philosophie</span>
+                        <h2 class="about-heading">Die Seele des Nordens.</h2>
+                        <p class="about-lead">nørvale entstand aus der Sehnsucht nach Klarheit, Natur und langlebiger Kleidung. Unsere Designs spiegeln die weite, raue Landschaft des Nordens wider.</p>
+                        
+                        <div class="about-story-blocks">
+                            <div class="story-block">
+                                <h3>Bewusster Minimalismus</h3>
+                                <p>Wir glauben nicht an schnelllebige Trends. Jedes nørvale-Stück ist so konzipiert, dass es vielseitig kombinierbar ist und Saison für Saison getragen werden kann.</p>
+                            </div>
+                            
+                            <div class="story-block">
+                                <h3>Verantwortung & Materialien</h3>
+                                <p>In Zusammenarbeit mit Spreadshop setzen wir auf eine bedarfsgerechte Produktion (Print-on-Demand), um Textilmüll und Überproduktion zu minimieren. Wir bevorzugen biologische Fasern und umweltfreundliche Druckverfahren.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visuals">
+                        <div class="about-image-wrapper">
+                            <img src="assets/hero_scenery.png" alt="Nordic lifestyle" class="about-main-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+        <button class="search-close" aria-label="Schließen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="search-inner">
+            <form class="search-form" onsubmit="event.preventDefault(); navigateToView('shop-view');">
+                <input type="text" placeholder="Suche nach Produkten..." class="search-input" autofocus>
+                <button type="submit" class="search-submit-btn">Suchen</button>
+            </form>
+            <p class="search-suggestions">Beliebte Suchanfragen: <span>Hoodies</span>, <span>T-Shirts</span>, <span>Caps</span></p>
+        </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <!-- Brand Column -->
+            <div class="footer-col brand-col">
+                <span class="footer-logo">nørvale</span>
+                <p class="footer-tagline">NORDIC BY NATURE. MADE TO LAST.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Shop Column -->
+            <div class="footer-col">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#shop" onclick="navigateToShopCategory('all')" data-target="shop-view">Alle Produkte</a></li>
+                    <li><a href="#shop" onclick="navigateToShopCategory('t-shirts')" data-target="shop-view">T-Shirts</a></li>
+                    <li><a href="#shop" onclick="navigateToShopCategory('hoodies')" data-target="shop-view">Hoodies</a></li>
+                    <li><a href="#shop" onclick="navigateToShopCategory('accessories')" data-target="shop-view">Accessoires</a></li>
+                </ul>
+            </div>
+
+            <!-- Company Column -->
+            <div class="footer-col">
+                <h3>Unternehmen</h3>
+                <ul>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Über uns</a></li>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Nachhaltigkeit</a></li>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Werte</a></li>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="footer-col newsletter-col">
+                <h3>Newsletter</h3>
+                <p>Melde dich für unseren Newsletter an, um exklusiven Vorabzugriff auf neue Drops und Angebote zu erhalten.</p>
+                <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                    <div class="form-group">
+                        <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="E-Mail für Newsletter">
+                        <button type="submit" aria-label="Abonnieren">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p class="copyright">&copy; 2026 nørvale clothing. Alle Rechte vorbehalten.</p>
+                <div class="legal-links">
+                    <a href="#about" onclick="navigateToView('about-view')">Datenschutz</a>
+                    <a href="#about" onclick="navigateToView('about-view')">AGB</a>
+                    <a href="#about" onclick="navigateToView('about-view')">Impressum</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Spreadshop Configuration & Scripts -->
+    <script>
+        var spread_shop_config = {
+            shopName: 'baokmedia',
+            locale: 'de_DE',
+            prefix: 'https://baokmedia.myspreadshop.de',
+            baseId: 'myShop'
+        };
+    </script>
+    <script type="text/javascript" src="https://baokmedia.myspreadshop.de/shopfiles/shopclient/shopclient.nocache.js"></script>
+
+    <!-- Client-Side App Logic -->
+    <script src="index.js"></script>
+</body>
+</html>
