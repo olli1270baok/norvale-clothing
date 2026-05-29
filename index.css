@@ -268,10 +268,38 @@ button {
 /* Nav Right & Icons */
 .nav-right {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     align-items: center;
     justify-content: flex-end;
     flex: 1;
+}
+
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.lang-btn {
+    color: var(--color-text-secondary);
+    transition: var(--transition-fast);
+    padding: 0.2rem 0.4rem;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.lang-divider {
+    color: var(--color-border);
+    font-size: 0.7rem;
 }
 
 .icon-btn {

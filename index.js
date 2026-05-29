@@ -3,6 +3,7 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initLanguageSwitcher();
     initNavigation();
     initMobileMenu();
     initSearchOverlay();
@@ -437,4 +438,285 @@ async function loadBestsellers() {
         console.warn('Could not load dynamic bestsellers from Spreadshop:', err);
     }
 }
+
+/**
+ * Translations Dictionary for DE and EN
+ */
+const translations = {
+    de: {
+        announcement: "Kostenloser Versand für alle Bestellungen ab 150 €",
+        nav_home: "Home",
+        nav_shop: "Shop",
+        nav_collections: "Kollektionen",
+        nav_about: "Über uns",
+        hero_tag: "Nordic by Nature",
+        hero_title: "MADE TO LAST.",
+        hero_desc: "Zeitloses Design. Nachhaltige Materialien. Kleidung inspiriert von der rauen Schönheit des Nordens.",
+        hero_btn_shop: "Kollektion Entdecken",
+        hero_btn_about: "Unsere Story",
+        cat_tag: "Kategorien",
+        cat_title: "Kollektionen durchstöbern",
+        cat_tshirt_desc: "Clean. Komfortabel. Essenziell.",
+        cat_tshirt_cta: "Jetzt Shoppen",
+        cat_hoodie_desc: "Für Komfort gebaut. Gemacht für Beständigkeit.",
+        cat_hoodie_cta: "Jetzt Shoppen",
+        cat_accessories_title: "Accessoires",
+        cat_accessories_desc: "Klare Akzente. Zeitloser Stil.",
+        cat_accessories_cta: "Entdecken",
+        value_title_1: "Nordisches Erbe",
+        value_desc_1: "Inspiriert von der rauen Natur und der Einfachheit Skandinaviens.",
+        value_title_2: "Nachhaltigkeit",
+        value_desc_2: "Bewusste Materialauswahl und faire Produktionsbedingungen.",
+        value_title_3: "Zeitloses Design",
+        value_desc_3: "Minimalismus, der sich Modetrends widersetzt und langlebig bleibt.",
+        value_title_4: "Langlebigkeit",
+        value_desc_4: "Mit Sorgfalt gefertigt, um Jahre intensiver Nutzung zu überstehen.",
+        best_tag: "Auswahl",
+        best_title: "Unsere Bestseller",
+        best_view_all: "Alle Produkte ansehen →",
+        badge_essential: "Essential",
+        badge_premium: "Premium",
+        shop_tag: "Offizieller Store",
+        shop_title: "nørvale Online-Shop",
+        shop_desc: "Bestelle unsere Kollektionen direkt über den eingebetteten Store. Sicher, schnell und direkt geliefert.",
+        shop_loading: "Kollektionen werden geladen...",
+        shop_fallback_btn: "Direkt zu Spreadshop öffnen",
+        coll_tag: "Unsere Drops",
+        coll_title: "Kollektionen",
+        coll_row_tag_1: "Neu eingetroffen",
+        coll_row_desc_1: "Erlesene Essentials, designt für Klarheit, Komfort und Bewegung. Gefertigt aus feinster Bio-Baumwolle und mit dezentem Logo-Stick.",
+        coll_row_btn_1: "Drop Shoppen",
+        coll_row_tag_2: "Klassiker",
+        coll_row_desc_2: "Unsere zeitlose Linie, die vom schlichten skandinavischen Lebensstil inspiriert ist. Dauerhaft im Sortiment und die perfekte Basis für jedes Outfit.",
+        coll_row_btn_2: "Kollektion ansehen",
+        about_tag: "Unsere Philosophie",
+        about_heading: "Die Seele des Nordens.",
+        about_lead: "nørvale entstand aus der Sehnsucht nach Klarheit, Natur und langlebiger Kleidung. Unsere Designs spiegeln die weite, raue Landschaft des Nordens wider.",
+        about_story_title_1: "Bewusster Minimalismus",
+        about_story_desc_1: "Wir glauben nicht an schnelllebige Trends. Jedes nørvale-Stück ist so konzipiert, dass es vielseitig kombinierbar ist und Saison für Saison getragen werden kann.",
+        about_story_title_2: "Verantwortung & Materialien",
+        about_story_desc_2: "In Zusammenarbeit mit Spreadshop setzen wir auf eine bedarfsgerechte Produktion (Print-on-Demand), um Textilmüll und Überproduktion zu minimieren. Wir bevorzugen biologische Fasern und umweltfreundliche Druckverfahren.",
+        search_placeholder: "Suche nach Produkten...",
+        search_btn: "Suchen",
+        search_suggestions: "Beliebte Suchanfragen: <span>Hoodies</span>, <span>T-Shirts</span>, <span>Caps</span>",
+        footer_title_shop: "Shop",
+        footer_shop_all: "Alle Produkte",
+        footer_shop_tshirts: "T-Shirts",
+        footer_shop_hoodies: "Hoodies",
+        footer_shop_accessories: "Accessoires",
+        footer_title_company: "Unternehmen",
+        footer_company_about: "Über uns",
+        footer_company_sustain: "Nachhaltigkeit",
+        footer_company_values: "Werte",
+        footer_company_contact: "Kontakt",
+        footer_title_newsletter: "Newsletter",
+        footer_newsletter_desc: "Melde dich für unseren Newsletter an, um exklusiven Vorabzugriff auf neue Drops und Angebote zu erhalten.",
+        footer_newsletter_placeholder: "Deine E-Mail-Adresse",
+        footer_copyright: "&copy; 2026 nørvale clothing. Alle Rechte vorbehalten.",
+        footer_privacy: "Datenschutz",
+        footer_terms: "AGB",
+        footer_imprint: "Impressum"
+    },
+    en: {
+        announcement: "Free shipping on all orders over 150 €",
+        nav_home: "Home",
+        nav_shop: "Shop",
+        nav_collections: "Collections",
+        nav_about: "About Us",
+        hero_tag: "Nordic by Nature",
+        hero_title: "MADE TO LAST.",
+        hero_desc: "Timeless design. Sustainable materials. Garments inspired by the raw beauty of the North.",
+        hero_btn_shop: "Explore Collection",
+        hero_btn_about: "Our Story",
+        cat_tag: "Categories",
+        cat_title: "Browse Collections",
+        cat_tshirt_desc: "Clean. Comfortable. Essential.",
+        cat_tshirt_cta: "Shop Now",
+        cat_hoodie_desc: "Built for comfort. Made to endure.",
+        cat_hoodie_cta: "Shop Now",
+        cat_accessories_title: "Accessories",
+        cat_accessories_desc: "Fresh styles. Timeless purpose.",
+        cat_accessories_cta: "Explore",
+        value_title_1: "Nordic Heritage",
+        value_desc_1: "Inspired by the raw nature and simplicity of Scandinavia.",
+        value_title_2: "Sustainability",
+        value_desc_2: "Conscious material choices and fair production conditions.",
+        value_title_3: "Timeless Design",
+        value_desc_3: "Minimalism that defies fast trends and remains long-lasting.",
+        value_title_4: "Built to Endure",
+        value_desc_4: "Made with care to withstand years of intensive wear.",
+        best_tag: "Selected",
+        best_title: "Our Bestsellers",
+        best_view_all: "View all products →",
+        badge_essential: "Essential",
+        badge_premium: "Premium",
+        shop_tag: "Official Store",
+        shop_title: "nørvale Online Shop",
+        shop_desc: "Order our collections directly through the embedded store. Secure, fast, and delivered straight to you.",
+        shop_loading: "Loading collections...",
+        shop_fallback_btn: "Open Spreadshop directly",
+        coll_tag: "Our Drops",
+        coll_title: "Collections",
+        coll_row_tag_1: "New Arrivals",
+        coll_row_desc_1: "Elevated essentials designed for clarity, comfort, and movement. Crafted from the finest organic cotton with subtle logo embroidery.",
+        coll_row_btn_1: "Shop Drop",
+        coll_row_tag_2: "Classics",
+        coll_row_desc_2: "Our timeless line inspired by the simple Scandinavian lifestyle. Permanently in stock and the perfect foundation for any outfit.",
+        coll_row_btn_2: "View Collection",
+        about_tag: "Our Philosophy",
+        about_heading: "The Soul of the North.",
+        about_lead: "nørvale was born from a desire for clarity, nature, and long-lasting garments. Our designs reflect the wide, raw landscape of the North.",
+        about_story_title_1: "Conscious Minimalism",
+        about_story_desc_1: "We do not believe in fast-paced trends. Each nørvale piece is designed to be versatile and worn season after season.",
+        about_story_title_2: "Responsibility & Materials",
+        about_story_desc_2: "In partnership with Spreadshop, we rely on print-on-demand production to minimize textile waste and overproduction. We prefer organic fibers and eco-friendly printing methods.",
+        search_placeholder: "Search for products...",
+        search_btn: "Search",
+        search_suggestions: "Popular searches: <span>Hoodies</span>, <span>T-Shirts</span>, <span>Caps</span>",
+        footer_title_shop: "Shop",
+        footer_shop_all: "All Products",
+        footer_shop_tshirts: "T-Shirts",
+        footer_shop_hoodies: "Hoodies",
+        footer_shop_accessories: "Accessories",
+        footer_title_company: "Company",
+        footer_company_about: "About Us",
+        footer_company_sustain: "Sustainability",
+        footer_company_values: "Our Values",
+        footer_company_contact: "Contact",
+        footer_title_newsletter: "Newsletter",
+        footer_newsletter_desc: "Sign up for our newsletter to get exclusive early access to new drops and offers.",
+        footer_newsletter_placeholder: "Your email address",
+        footer_copyright: "&copy; 2026 nørvale clothing. All rights reserved.",
+        footer_privacy: "Privacy Policy",
+        footer_terms: "Terms & Conditions",
+        footer_imprint: "Imprint"
+    }
+};
+
+/**
+ * Initialize Language Switcher
+ */
+function initLanguageSwitcher() {
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const savedLang = localStorage.getItem('norvale_lang') || 'de';
+    
+    // Set initial active state in header
+    langButtons.forEach(btn => {
+        if (btn.getAttribute('data-lang') === savedLang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+        
+        btn.addEventListener('click', () => {
+            const selectedLang = btn.getAttribute('data-lang');
+            if (selectedLang) {
+                switchLanguage(selectedLang);
+            }
+        });
+    });
+    
+    // Apply saved language immediately
+    applyLanguage(savedLang, false); // false = do not reload Spreadshop on initial boot (it's already loading)
+}
+
+/**
+ * Switch page language dynamically
+ */
+function switchLanguage(lang) {
+    const currentLang = localStorage.getItem('norvale_lang') || 'de';
+    if (lang === currentLang) return;
+    
+    // Save to local storage
+    localStorage.setItem('norvale_lang', lang);
+    
+    // Update active class on buttons
+    const langButtons = document.querySelectorAll('.lang-btn');
+    langButtons.forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Apply changes
+    applyLanguage(lang, true); // true = reload Spreadshop to change shop locale
+}
+
+/**
+ * Translate elements and reload Spreadshop
+ */
+function applyLanguage(lang, shouldReloadShop) {
+    document.documentElement.setAttribute('lang', lang);
+    
+    // Translate text contents
+    const translatableElements = document.querySelectorAll('[data-i18n]');
+    translatableElements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+    
+    // Translate placeholders
+    const translatablePlaceholders = document.querySelectorAll('[data-i18n-placeholder]');
+    translatablePlaceholders.forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.setAttribute('placeholder', translations[lang][key]);
+        }
+    });
+    
+    // Reload Spreadshop with new locale
+    if (shouldReloadShop) {
+        reloadSpreadshop(lang);
+    }
+}
+
+/**
+ * Re-render Spreadshop dynamically to switch languages
+ */
+function reloadSpreadshop(lang) {
+    const shopContainer = document.getElementById('myShop');
+    if (!shopContainer) return;
+    
+    // Clear current shop elements
+    shopContainer.innerHTML = '';
+    
+    // Re-insert loading spinner
+    const spinner = document.createElement('div');
+    spinner.className = 'shop-loading-spinner';
+    spinner.innerHTML = `
+        <div class="spinner"></div>
+        <p data-i18n="shop_loading">${lang === 'de' ? 'Kollektionen werden geladen...' : 'Loading collections...'}</p>
+        <a href="https://baokmedia.myspreadshop.de" class="btn btn-secondary" data-i18n="shop_fallback_btn">${lang === 'de' ? 'Direkt zu Spreadshop öffnen' : 'Open Spreadshop directly'}</a>
+    `;
+    shopContainer.appendChild(spinner);
+    
+    // Re-configure the global Spreadshop settings object
+    window.spread_shop_config = {
+        shopName: 'baokmedia',
+        locale: lang === 'de' ? 'de_DE' : 'en_GB',
+        prefix: 'https://baokmedia.myspreadshop.de',
+        baseId: 'myShop'
+    };
+    
+    // Remove existing shop client script tags to avoid conflicts
+    const oldScripts = document.querySelectorAll('script[src*="shopclient.nocache.js"]');
+    oldScripts.forEach(s => s.remove());
+    
+    // Delete GWT hooks
+    delete window.spreadshop;
+    
+    // Append new script tag to trigger re-rendering
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://baokmedia.myspreadshop.de/shopfiles/shopclient/shopclient.nocache.js?t=' + Date.now();
+    document.body.appendChild(script);
+    
+    // Trigger shop loading check
+    setupShopLoadingState();
+}
+
 

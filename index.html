@@ -18,7 +18,7 @@
 
     <!-- Announcement Bar -->
     <div class="announcement-bar">
-        <p>Kostenloser Versand für alle Bestellungen ab 150 €</p>
+        <p data-i18n="announcement">Kostenloser Versand für alle Bestellungen ab 150 €</p>
     </div>
 
     <!-- Main Header -->
@@ -26,10 +26,10 @@
         <div class="header-container">
             <!-- Left Navigation -->
             <nav class="nav-left">
-                <a href="#home" class="nav-link active" data-target="home-view">Home</a>
-                <a href="#!/list" class="nav-link" data-target="shop-view">Shop</a>
-                <a href="#collections" class="nav-link" data-target="collections-view">Kollektionen</a>
-                <a href="#about" class="nav-link" data-target="about-view">Über uns</a>
+                <a href="#home" class="nav-link active" data-target="home-view" data-i18n="nav_home">Home</a>
+                <a href="#!/list" class="nav-link" data-target="shop-view" data-i18n="nav_shop">Shop</a>
+                <a href="#collections" class="nav-link" data-target="collections-view" data-i18n="nav_collections">Kollektionen</a>
+                <a href="#about" class="nav-link" data-target="about-view" data-i18n="nav_about">Über uns</a>
             </nav>
 
             <!-- Center Logo -->
@@ -39,6 +39,13 @@
 
             <!-- Right Utilities -->
             <div class="nav-right">
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="de">DE</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                
                 <button class="icon-btn search-toggle" aria-label="Suche">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -71,10 +78,10 @@
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-drawer">
         <nav class="mobile-nav">
-            <a href="#home" class="mobile-nav-link active" data-target="home-view">Home</a>
-            <a href="#shop" class="mobile-nav-link" data-target="shop-view">Shop</a>
-            <a href="#collections" class="mobile-nav-link" data-target="collections-view">Kollektionen</a>
-            <a href="#about" class="mobile-nav-link" data-target="about-view">Über uns</a>
+            <a href="#home" class="mobile-nav-link active" data-target="home-view" data-i18n="nav_home">Home</a>
+            <a href="#!/list" class="mobile-nav-link" data-target="shop-view" data-i18n="nav_shop">Shop</a>
+            <a href="#collections" class="mobile-nav-link" data-target="collections-view" data-i18n="nav_collections">Kollektionen</a>
+            <a href="#about" class="mobile-nav-link" data-target="about-view" data-i18n="nav_about">Über uns</a>
         </nav>
     </div>
 
@@ -89,12 +96,12 @@
                     <img src="assets/hero_scenery.png" alt="Nordische Landschaft und Minimal-T-Shirt" class="hero-image">
                 </div>
                 <div class="hero-content">
-                    <p class="hero-subtitle-tag">Nordic by Nature</p>
-                    <h1 class="hero-title">MADE TO LAST.</h1>
-                    <p class="hero-description">Zeitloses Design. Nachhaltige Materialien. Kleidung inspiriert von der rauen Schönheit des Nordens.</p>
+                    <p class="hero-subtitle-tag" data-i18n="hero_tag">Nordic by Nature</p>
+                    <h1 class="hero-title" data-i18n="hero_title">MADE TO LAST.</h1>
+                    <p class="hero-description" data-i18n="hero_desc">Zeitloses Design. Nachhaltige Materialien. Kleidung inspiriert von der rauen Schönheit des Nordens.</p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="navigateToView('shop-view')">Kollektion Entdecken</button>
-                        <button class="btn btn-secondary" onclick="navigateToView('about-view')">Unsere Story</button>
+                        <button class="btn btn-primary" onclick="navigateToView('shop-view')" data-i18n="hero_btn_shop">Kollektion Entdecken</button>
+                        <button class="btn btn-secondary" onclick="navigateToView('about-view')" data-i18n="hero_btn_about">Unsere Story</button>
                     </div>
                 </div>
             </div>
@@ -103,8 +110,8 @@
             <section class="section categories-section">
                 <div class="container">
                     <div class="section-header">
-                        <span class="section-tag">Kategorien</span>
-                        <h2 class="section-title">Kollektionen durchstöbern</h2>
+                        <span class="section-tag" data-i18n="cat_tag">Kategorien</span>
+                        <h2 class="section-title" data-i18n="cat_title">Kollektionen durchstöbern</h2>
                     </div>
                     <div class="categories-grid">
                         <!-- T-Shirts -->
@@ -114,8 +121,8 @@
                             </div>
                             <div class="card-content">
                                 <h3>T-Shirts</h3>
-                                <p>Clean. Komfortabel. Essenziell.</p>
-                                <span class="card-link">Jetzt Shoppen</span>
+                                <p data-i18n="cat_tshirt_desc">Clean. Komfortabel. Essenziell.</p>
+                                <span class="card-link" data-i18n="cat_tshirt_cta">Jetzt Shoppen</span>
                             </div>
                         </div>
 
@@ -126,8 +133,8 @@
                             </div>
                             <div class="card-content">
                                 <h3>Hoodies</h3>
-                                <p>Für Komfort gebaut. Gemacht für Beständigkeit.</p>
-                                <span class="card-link">Jetzt Shoppen</span>
+                                <p data-i18n="cat_hoodie_desc">Für Komfort gebaut. Gemacht für Beständigkeit.</p>
+                                <span class="card-link" data-i18n="cat_hoodie_cta">Jetzt Shoppen</span>
                             </div>
                         </div>
 
@@ -137,9 +144,9 @@
                                 <img src="assets/cat_accessories.png?v=2" alt="nørvale Accessoires" class="card-image">
                             </div>
                             <div class="card-content">
-                                <h3>Accessoires</h3>
-                                <p>Klare Akzente. Zeitloser Stil.</p>
-                                <span class="card-link">Entdecken</span>
+                                <h3 data-i18n="cat_accessories_title">Accessoires</h3>
+                                <p data-i18n="cat_accessories_desc">Klare Akzente. Zeitloser Stil.</p>
+                                <span class="card-link" data-i18n="cat_accessories_cta">Entdecken</span>
                             </div>
                         </div>
                     </div>
@@ -158,8 +165,8 @@
                                     <path d="M7 12h10"></path>
                                 </svg>
                             </div>
-                            <h3>Nordisches Erbe</h3>
-                            <p>Inspiriert von der rauen Natur und der Einfachheit Skandinaviens.</p>
+                            <h3 data-i18n="value_title_1">Nordisches Erbe</h3>
+                            <p data-i18n="value_desc_1">Inspiriert von der rauen Natur und der Einfachheit Skandinaviens.</p>
                         </div>
                         <div class="value-item">
                             <div class="value-icon">
@@ -169,8 +176,8 @@
                                     <path d="M12 10C9.5 10 8 11.5 8 13.5s1.5 3.5 4 4.5"></path>
                                 </svg>
                             </div>
-                            <h3>Nachhaltigkeit</h3>
-                            <p>Bewusste Materialauswahl und faire Produktionsbedingungen.</p>
+                            <h3 data-i18n="value_title_2">Nachhaltigkeit</h3>
+                            <p data-i18n="value_desc_2">Bewusste Materialauswahl und faire Produktionsbedingungen.</p>
                         </div>
                         <div class="value-item">
                             <div class="value-icon">
@@ -180,8 +187,8 @@
                                     <path d="M2 9h20"></path>
                                 </svg>
                             </div>
-                            <h3>Zeitloses Design</h3>
-                            <p>Minimalismus, der sich Modetrends widersetzt und langlebig bleibt.</p>
+                            <h3 data-i18n="value_title_3">Zeitloses Design</h3>
+                            <p data-i18n="value_desc_3">Minimalismus, der sich Modetrends widersetzt und langlebig bleibt.</p>
                         </div>
                         <div class="value-item">
                             <div class="value-icon">
@@ -191,8 +198,8 @@
                                     <path d="M12 12m-9 0a9 9 0 1 0 18 0 9 9 0 1 0 -18 0"></path>
                                 </svg>
                             </div>
-                            <h3>Langlebigkeit</h3>
-                            <p>Mit Sorgfalt gefertigt, um Jahre intensiver Nutzung zu überstehen.</p>
+                            <h3 data-i18n="value_title_4">Langlebigkeit</h3>
+                            <p data-i18n="value_desc_4">Mit Sorgfalt gefertigt, um Jahre intensiver Nutzung zu überstehen.</p>
                         </div>
                     </div>
                 </div>
@@ -203,10 +210,10 @@
                 <div class="container">
                     <div class="section-header flex-header">
                         <div>
-                            <span class="section-tag">Auswahl</span>
-                            <h2 class="section-title">Unsere Bestseller</h2>
+                            <span class="section-tag" data-i18n="best_tag">Auswahl</span>
+                            <h2 class="section-title" data-i18n="best_title">Unsere Bestseller</h2>
                         </div>
-                        <button class="text-link-btn" onclick="navigateToView('shop-view')">Alle Produkte ansehen →</button>
+                        <button class="text-link-btn" onclick="navigateToView('shop-view')" data-i18n="best_view_all">Alle Produkte ansehen →</button>
                     </div>
                     <div class="products-grid">
                         <!-- Product 1 -->
@@ -230,7 +237,7 @@
                         <div class="product-card" onclick="window.location.hash = '#!/sellable/G7EL2NQEbnHV9pvaX1XE-1155-23'">
                             <div class="product-img-wrapper">
                                 <img src="https://image.spreadshirtmedia.net/image-server/v1/products/T1155A195PA2483PT32X50Y79D359024521W15201H12369/views/1,width=500,height=500,appearanceId=195,backgroundColor=f4e3cb,crop=list,modelId=12877/minimalistisches-noervale-design-im-nordisch-eleganten-stil-dezenter-premium-look-fuer-hoodies-shirts-und-accessoires-ruhig-klar-hochwertig-und-mo.jpg" alt="nørvale Nordic Badge T-Shirt" class="product-image">
-                                <span class="badge">Essential</span>
+                                <span class="badge" data-i18n="badge_essential">Essential</span>
                             </div>
                             <div class="product-details">
                                 <h3 class="product-name">nørvale Nordic Badge Shirt</h3>
@@ -246,7 +253,7 @@
                         <div class="product-card" onclick="window.location.hash = '#!/sellable/G7EL2NQEbnHV9pvaX1XE-4179-23'">
                             <div class="product-img-wrapper">
                                 <img src="https://image.spreadshirtmedia.net/image-server/v1/products/T4179A1259PA10032PT17X25Y17D359024521W25000H20342/views/1,width=500,height=500,appearanceId=1259,backgroundColor=f4e3cb,crop=list,modelId=23171/minimalistisches-noervale-design-im-nordisch-eleganten-stil-dezenter-premium-look-fuer-hoodies-shirts-und-accessoires-ruhig-klar-hochwertig-und-mo.jpg" alt="nørvale Premium Hoodie" class="product-image">
-                                <span class="badge">Premium</span>
+                                <span class="badge" data-i18n="badge_premium">Premium</span>
                             </div>
                             <div class="product-details">
                                 <h3 class="product-name">nørvale Premium Hoodie</h3>
@@ -277,9 +284,9 @@
         <section id="shop-view" class="view">
             <div class="container shop-wrapper">
                 <div class="shop-header">
-                    <span class="section-tag">Offizieller Store</span>
-                    <h2 class="section-title">nørvale Online-Shop</h2>
-                    <p class="shop-intro-text">Bestelle unsere Kollektionen direkt über den eingebetteten Store. Sicher, schnell und direkt geliefert.</p>
+                    <span class="section-tag" data-i18n="shop_tag">Offizieller Store</span>
+                    <h2 class="section-title" data-i18n="shop_title">nørvale Online-Shop</h2>
+                    <p class="shop-intro-text" data-i18n="shop_desc">Bestelle unsere Kollektionen direkt über den eingebetteten Store. Sicher, schnell und direkt geliefert.</p>
                 </div>
                 
                 <!-- Spreadshop Container -->
@@ -287,8 +294,8 @@
                     <div id="myShop">
                         <div class="shop-loading-spinner">
                             <div class="spinner"></div>
-                            <p>Kollektionen werden geladen...</p>
-                            <a href="https://baokmedia.myspreadshop.de" class="btn btn-secondary">Direkt zu Spreadshop öffnen</a>
+                            <p data-i18n="shop_loading">Kollektionen werden geladen...</p>
+                            <a href="https://baokmedia.myspreadshop.de" class="btn btn-secondary" data-i18n="shop_fallback_btn">Direkt zu Spreadshop öffnen</a>
                         </div>
                     </div>
                 </div>
@@ -300,8 +307,8 @@
         <section id="collections-view" class="view">
             <div class="container section">
                 <div class="section-header">
-                    <span class="section-tag">Unsere Drops</span>
-                    <h2 class="section-title">Kollektionen</h2>
+                    <span class="section-tag" data-i18n="coll_tag">Unsere Drops</span>
+                    <h2 class="section-title" data-i18n="coll_title">Kollektionen</h2>
                 </div>
                 
                 <div class="collections-list">
@@ -311,10 +318,10 @@
                             <img src="assets/hero_scenery.png" alt="Essential Collection">
                         </div>
                         <div class="collection-row-info">
-                            <span class="row-tag">Neu eingetroffen</span>
+                            <span class="row-tag" data-i18n="coll_row_tag_1">Neu eingetroffen</span>
                             <h3>Essential Collection Drop 02</h3>
-                            <p>Erlesene Essentials, designt für Klarheit, Komfort und Bewegung. Gefertigt aus feinster Bio-Baumwolle und mit dezentem Logo-Stick.</p>
-                            <button class="btn btn-primary" onclick="navigateToView('shop-view')">Drop Shoppen</button>
+                            <p data-i18n="coll_row_desc_1">Erlesene Essentials, designt für Klarheit, Komfort und Bewegung. Gefertigt aus feinster Bio-Baumwolle und mit dezentem Logo-Stick.</p>
+                            <button class="btn btn-primary" onclick="navigateToView('shop-view')" data-i18n="coll_row_btn_1">Drop Shoppen</button>
                         </div>
                     </div>
                     
@@ -324,10 +331,10 @@
                             <img src="assets/cat_hoodie.png?v=2" alt="Nordic Heritage Collection">
                         </div>
                         <div class="collection-row-info">
-                            <span class="row-tag">Klassiker</span>
+                            <span class="row-tag" data-i18n="coll_row_tag_2">Klassiker</span>
                             <h3>Nordic Heritage</h3>
-                            <p>Unsere zeitlose Linie, die vom schlichten skandinavischen Lebensstil inspiriert ist. Dauerhaft im Sortiment und die perfekte Basis für jedes Outfit.</p>
-                            <button class="btn btn-secondary" onclick="navigateToView('shop-view')">Kollektion ansehen</button>
+                            <p data-i18n="coll_row_desc_2">Unsere zeitlose Linie, die vom schlichten skandinavischen Lebensstil inspiriert ist. Dauerhaft im Sortiment und die perfekte Basis für jedes Outfit.</p>
+                            <button class="btn btn-secondary" onclick="navigateToView('shop-view')" data-i18n="coll_row_btn_2">Kollektion ansehen</button>
                         </div>
                     </div>
                 </div>
@@ -340,19 +347,19 @@
             <div class="container section about-container">
                 <div class="about-grid">
                     <div class="about-text-content">
-                        <span class="section-tag">Unsere Philosophie</span>
-                        <h2 class="about-heading">Die Seele des Nordens.</h2>
-                        <p class="about-lead">nørvale entstand aus der Sehnsucht nach Klarheit, Natur und langlebiger Kleidung. Unsere Designs spiegeln die weite, raue Landschaft des Nordens wider.</p>
+                        <span class="section-tag" data-i18n="about_tag">Unsere Philosophie</span>
+                        <h2 class="about-heading" data-i18n="about_heading">Die Seele des Nordens.</h2>
+                        <p class="about-lead" data-i18n="about_lead">nørvale entstand aus der Sehnsucht nach Klarheit, Natur und langlebiger Kleidung. Unsere Designs spiegeln die weite, raue Landschaft des Nordens wider.</p>
                         
                         <div class="about-story-blocks">
                             <div class="story-block">
-                                <h3>Bewusster Minimalismus</h3>
-                                <p>Wir glauben nicht an schnelllebige Trends. Jedes nørvale-Stück ist so konzipiert, dass es vielseitig kombinierbar ist und Saison für Saison getragen werden kann.</p>
+                                <h3 data-i18n="about_story_title_1">Bewusster Minimalismus</h3>
+                                <p data-i18n="about_story_desc_1">Wir glauben nicht an schnelllebige Trends. Jedes nørvale-Stück ist so konzipiert, dass es vielseitig kombinierbar ist und Saison für Saison getragen werden kann.</p>
                             </div>
                             
                             <div class="story-block">
-                                <h3>Verantwortung & Materialien</h3>
-                                <p>In Zusammenarbeit mit Spreadshop setzen wir auf eine bedarfsgerechte Produktion (Print-on-Demand), um Textilmüll und Überproduktion zu minimieren. Wir bevorzugen biologische Fasern und umweltfreundliche Druckverfahren.</p>
+                                <h3 data-i18n="about_story_title_2">Verantwortung & Materialien</h3>
+                                <p data-i18n="about_story_desc_2">In Zusammenarbeit mit Spreadshop setzen wir auf eine bedarfsgerechte Produktion (Print-on-Demand), um Textilmüll und Überproduktion zu minimieren. Wir bevorzugen biologische Fasern und umweltfreundliche Druckverfahren.</p>
                             </div>
                         </div>
                     </div>
@@ -377,10 +384,10 @@
         </button>
         <div class="search-inner">
             <form class="search-form" onsubmit="event.preventDefault(); navigateToView('shop-view');">
-                <input type="text" placeholder="Suche nach Produkten..." class="search-input" autofocus>
-                <button type="submit" class="search-submit-btn">Suchen</button>
+                <input type="text" placeholder="Suche nach Produkten..." class="search-input" data-i18n-placeholder="search_placeholder" autofocus>
+                <button type="submit" class="search-submit-btn" data-i18n="search_btn">Suchen</button>
             </form>
-            <p class="search-suggestions">Beliebte Suchanfragen: <span>Hoodies</span>, <span>T-Shirts</span>, <span>Caps</span></p>
+            <p class="search-suggestions" data-i18n="search_suggestions">Beliebte Suchanfragen: <span>Hoodies</span>, <span>T-Shirts</span>, <span>Caps</span></p>
         </div>
     </div>
 
@@ -416,33 +423,33 @@
 
             <!-- Shop Column -->
             <div class="footer-col">
-                <h3>Shop</h3>
+                <h3 data-i18n="footer_title_shop">Shop</h3>
                 <ul>
-                    <li><a href="#shop" onclick="navigateToShopCategory('all')" data-target="shop-view">Alle Produkte</a></li>
-                    <li><a href="#shop" onclick="navigateToShopCategory('t-shirts')" data-target="shop-view">T-Shirts</a></li>
-                    <li><a href="#shop" onclick="navigateToShopCategory('hoodies')" data-target="shop-view">Hoodies</a></li>
-                    <li><a href="#shop" onclick="navigateToShopCategory('accessories')" data-target="shop-view">Accessoires</a></li>
+                    <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_all">Alle Produkte</a></li>
+                    <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_tshirts">T-Shirts</a></li>
+                    <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_hoodies">Hoodies</a></li>
+                    <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_accessories">Accessoires</a></li>
                 </ul>
             </div>
 
             <!-- Company Column -->
             <div class="footer-col">
-                <h3>Unternehmen</h3>
+                <h3 data-i18n="footer_title_company">Unternehmen</h3>
                 <ul>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Über uns</a></li>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Nachhaltigkeit</a></li>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Werte</a></li>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view">Kontakt</a></li>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_about">Über uns</a></li>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_sustain">Nachhaltigkeit</a></li>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_values">Werte</a></li>
+                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_contact">Kontakt</a></li>
                 </ul>
             </div>
 
             <!-- Newsletter Column -->
             <div class="footer-col newsletter-col">
-                <h3>Newsletter</h3>
-                <p>Melde dich für unseren Newsletter an, um exklusiven Vorabzugriff auf neue Drops und Angebote zu erhalten.</p>
+                <h3 data-i18n="footer_title_newsletter">Newsletter</h3>
+                <p data-i18n="footer_newsletter_desc">Melde dich für unseren Newsletter an, um exklusiven Vorabzugriff auf neue Drops und Angebote zu erhalten.</p>
                 <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
                     <div class="form-group">
-                        <input type="email" placeholder="Deine E-Mail-Adresse" required aria-label="E-Mail für Newsletter">
+                        <input type="email" placeholder="Deine E-Mail-Adresse" data-i18n-placeholder="footer_newsletter_placeholder" required aria-label="E-Mail für Newsletter">
                         <button type="submit" aria-label="Abonnieren">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -457,11 +464,11 @@
         <!-- Footer Bottom Bar -->
         <div class="footer-bottom">
             <div class="container footer-bottom-flex">
-                <p class="copyright">&copy; 2026 nørvale clothing. Alle Rechte vorbehalten.</p>
+                <p class="copyright" data-i18n="footer_copyright">&copy; 2026 nørvale clothing. Alle Rechte vorbehalten.</p>
                 <div class="legal-links">
-                    <a href="#about" onclick="navigateToView('about-view')">Datenschutz</a>
-                    <a href="#about" onclick="navigateToView('about-view')">AGB</a>
-                    <a href="#about" onclick="navigateToView('about-view')">Impressum</a>
+                    <a href="#about" onclick="navigateToView('about-view')" data-i18n="footer_privacy">Datenschutz</a>
+                    <a href="#about" onclick="navigateToView('about-view')" data-i18n="footer_terms">AGB</a>
+                    <a href="#about" onclick="navigateToView('about-view')" data-i18n="footer_imprint">Impressum</a>
                 </div>
             </div>
         </div>
