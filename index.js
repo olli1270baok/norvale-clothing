@@ -21,29 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
  * SPA-like Navigation System
  */
 function initNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link, .logo-container a, .mobile-nav-link, .footer-col a, .legal-links a');
+    const navLinks = document.querySelectorAll('.nav-link, .logo-container a, .mobile-nav-drawer a, .footer-col a, .legal-links a');
     
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('data-target');
-            const href = link.getAttribute('href');
-            
-            if (targetId) {
-                // If it's a Spreadshop route (starts with #!), let the hash change naturally
-                if (href && href.startsWith('#!')) {
-                    return;
-                }
-                
-                // If it's an internal link, prevent default href behavior
-                e.preventDefault();
-                navigateToView(targetId);
-                
-                // Close mobile menu if open
-                const drawer = document.querySelector('.mobile-nav-drawer');
-                const toggle = document.querySelector('.mobile-menu-toggle');
-                if (drawer && drawer.classList.contains('open')) {
-                    drawer.classList.remove('open');
+            // Close mobile menu if open
+            const drawer = document.querySelector('.mobile-nav-drawer');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            if (drawer && drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                if (toggle) {
                     toggle.classList.remove('active');
+                    if (toggle.children.length >= 2) {
+                        toggle.children[0].style.transform = 'none';
+                        toggle.children[1].style.transform = 'none';
+                    }
                 }
             }
         });
@@ -125,10 +117,16 @@ window.navigateToView = navigateToView;
  * Handle Shop Category Navigation
  */
 function navigateToShopCategory(category) {
-    navigateToView('shop-view');
+    if (category === 't-shirts') {
+        window.location.hash = '#!/search?q=t-shirt';
+    } else if (category === 'hoodies') {
+        window.location.hash = '#!/search?q=hoodie';
+    } else if (category === 'accessories') {
+        window.location.hash = '#!/search?q=accessoire';
+    } else {
+        navigateToView('shop-view');
+    }
     
-    // Spreadshop uses URL parameters or hash tags for category routing internally when embedded.
-    // If the shop is already loaded, we let the user explore. We also log the selected category.
     console.log(`Navigating to Spreadshop category: ${category}`);
     
     // Optionally, scroll down to the shop container
@@ -209,8 +207,48 @@ function initSearchOverlay() {
                 overlay.classList.remove('open');
             }
         });
+
+        // Clickable search suggestions using event delegation
+        const suggestionsContainer = document.querySelector('.search-suggestions');
+        if (suggestionsContainer) {
+            suggestionsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'SPAN') {
+                    const query = e.target.textContent;
+                    if (input) {
+                        input.value = query;
+                        const form = document.querySelector('.search-form');
+                        if (form) {
+                            handleSearchSubmit(new Event('submit'));
+                        }
+                    }
+                }
+            });
+        }
     }
 }
+
+/**
+ * Handle Search Form Submission
+ */
+function handleSearchSubmit(event) {
+    if (event) event.preventDefault();
+    const input = document.querySelector('.search-input');
+    const query = input ? input.value.trim() : '';
+    
+    // Close the search overlay
+    const overlay = document.querySelector('.search-overlay');
+    if (overlay) {
+        overlay.classList.remove('open');
+    }
+    
+    if (query) {
+        // Redirect to shop view with search query hash
+        window.location.hash = `#!/search?q=${encodeURIComponent(query)}`;
+    } else {
+        window.location.hash = '#!/list';
+    }
+}
+window.handleSearchSubmit = handleSearchSubmit;
 
 /**
  * Interactive Product Card Color Dot Selectors

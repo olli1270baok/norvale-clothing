@@ -100,8 +100,8 @@
                     <h1 class="hero-title" data-i18n="hero_title">MADE TO LAST.</h1>
                     <p class="hero-description" data-i18n="hero_desc">Zeitloses Design. Nachhaltige Materialien. Kleidung inspiriert von der rauen Schönheit des Nordens.</p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="navigateToView('shop-view')" data-i18n="hero_btn_shop">Kollektion Entdecken</button>
-                        <button class="btn btn-secondary" onclick="navigateToView('about-view')" data-i18n="hero_btn_about">Unsere Story</button>
+                        <button class="btn btn-primary" onclick="window.location.hash = '#!/list'" data-i18n="hero_btn_shop">Kollektion Entdecken</button>
+                        <button class="btn btn-secondary" onclick="window.location.hash = '#about'" data-i18n="hero_btn_about">Unsere Story</button>
                     </div>
                 </div>
             </div>
@@ -334,7 +334,7 @@
                             <span class="row-tag" data-i18n="coll_row_tag_1">Neu eingetroffen</span>
                             <h3 data-i18n="coll_row_title_1">Essential Collection Drop 02</h3>
                             <p data-i18n="coll_row_desc_1">Erlesene Essentials, designt für Klarheit, Komfort und Bewegung. Gefertigt aus feinster Bio-Baumwolle und mit dezentem Logo-Stick.</p>
-                            <button class="btn btn-primary" onclick="navigateToView('shop-view')" data-i18n="coll_row_btn_1">Drop Shoppen</button>
+                            <button class="btn btn-primary" onclick="window.location.hash = '#!/search?q=Essential'" data-i18n="coll_row_btn_1">Drop Shoppen</button>
                         </div>
                     </div>
                     
@@ -347,7 +347,7 @@
                             <span class="row-tag" data-i18n="coll_row_tag_2">Klassiker</span>
                             <h3 data-i18n="coll_row_title_2">Nordic Heritage</h3>
                             <p data-i18n="coll_row_desc_2">Unsere zeitlose Linie, die vom schlichten skandinavischen Lebensstil inspiriert ist. Dauerhaft im Sortiment und die perfekte Basis für jedes Outfit.</p>
-                            <button class="btn btn-secondary" onclick="navigateToView('shop-view')" data-i18n="coll_row_btn_2">Kollektion ansehen</button>
+                            <button class="btn btn-secondary" onclick="window.location.hash = '#!/search?q=Nordic'" data-i18n="coll_row_btn_2">Kollektion ansehen</button>
                         </div>
                     </div>
                 </div>
@@ -396,7 +396,7 @@
             </svg>
         </button>
         <div class="search-inner">
-            <form class="search-form" onsubmit="event.preventDefault(); navigateToView('shop-view');">
+            <form class="search-form" onsubmit="handleSearchSubmit(event)">
                 <input type="text" placeholder="Suche nach Produkten..." class="search-input" data-i18n-placeholder="search_placeholder" autofocus>
                 <button type="submit" class="search-submit-btn" data-i18n="search_btn">Suchen</button>
             </form>
@@ -439,9 +439,9 @@
                 <h3 data-i18n="footer_title_shop">Shop</h3>
                 <ul>
                     <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_all">Alle Produkte</a></li>
-                    <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_tshirts">T-Shirts</a></li>
-                    <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_hoodies">Hoodies</a></li>
-                    <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_accessories">Accessoires</a></li>
+                    <li><a href="#!/search?q=t-shirt" data-target="shop-view" data-i18n="footer_shop_tshirts">T-Shirts</a></li>
+                    <li><a href="#!/search?q=hoodie" data-target="shop-view" data-i18n="footer_shop_hoodies">Hoodies</a></li>
+                    <li><a href="#!/search?q=accessoire" data-target="shop-view" data-i18n="footer_shop_accessories">Accessoires</a></li>
                 </ul>
             </div>
 
@@ -449,10 +449,10 @@
             <div class="footer-col">
                 <h3 data-i18n="footer_title_company">Unternehmen</h3>
                 <ul>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_about">Über uns</a></li>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_sustain">Nachhaltigkeit</a></li>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_values">Werte</a></li>
-                    <li><a href="#about" onclick="navigateToView('about-view')" data-target="about-view" data-i18n="footer_company_contact">Kontakt</a></li>
+                    <li><a href="#about" data-target="about-view" data-i18n="footer_company_about">Über uns</a></li>
+                    <li><a href="#about" data-target="about-view" data-i18n="footer_company_sustain">Nachhaltigkeit</a></li>
+                    <li><a href="#about" data-target="about-view" data-i18n="footer_company_values">Werte</a></li>
+                    <li><a href="#about" data-target="about-view" data-i18n="footer_company_contact">Kontakt</a></li>
                 </ul>
             </div>
 
@@ -479,9 +479,9 @@
             <div class="container footer-bottom-flex">
                 <p class="copyright" data-i18n="footer_copyright">&copy; 2026 nørvale clothing. Alle Rechte vorbehalten.</p>
                 <div class="legal-links">
-                    <a href="#about" onclick="navigateToView('about-view')" data-i18n="footer_privacy">Datenschutz</a>
-                    <a href="#about" onclick="navigateToView('about-view')" data-i18n="footer_terms">AGB</a>
-                    <a href="#about" onclick="navigateToView('about-view')" data-i18n="footer_imprint">Impressum</a>
+                    <a href="#about" data-target="about-view" data-i18n="footer_privacy">Datenschutz</a>
+                    <a href="#about" data-target="about-view" data-i18n="footer_terms">AGB</a>
+                    <a href="#about" data-target="about-view" data-i18n="footer_imprint">Impressum</a>
                 </div>
             </div>
         </div>
