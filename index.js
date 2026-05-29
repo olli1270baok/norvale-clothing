@@ -43,14 +43,23 @@ function initNavigation() {
 
 function handleUrlHash() {
     const hash = window.location.hash;
-    if (hash === '#shop' || hash.startsWith('#!')) {
-        navigateToView('shop-view');
-    } else if (hash === '#collections') {
+    const activeView = document.querySelector('.view.active');
+    const activeViewId = activeView ? activeView.id : '';
+
+    if (hash === '#collections') {
         navigateToView('collections-view');
     } else if (hash === '#about') {
         navigateToView('about-view');
-    } else if (hash === '#home' || hash === '') {
+    } else if (hash === '#home') {
         navigateToView('home-view');
+    } else if (hash === '#shop' || hash.startsWith('#!')) {
+        navigateToView('shop-view');
+    } else if (hash === '' || hash === '#') {
+        // Only default to home on initial load or if we are already on home.
+        // Prevents Spreadshop state resets from kicking the user back to the home screen.
+        if (activeViewId === '' || activeViewId === 'home-view') {
+            navigateToView('home-view');
+        }
     }
 }
 
