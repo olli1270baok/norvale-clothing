@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initColorDots();
     initNewsletter();
     setupShopLoadingState();
+    loadBestsellers();
     
     // Start syncing the shopping cart quantity badge
     setInterval(syncCartCount, 1000);
@@ -349,6 +350,91 @@ function syncCartCount() {
         customBadge.style.display = 'flex';
     } else {
         customBadge.textContent = '0';
+    }
+}
+
+/**
+ * Dynamically load bestseller products from the Spreadshop API feed
+ */
+async function loadBestsellers() {
+    const grid = document.querySelector('.bestsellers-section .products-grid');
+    if (!grid) return;
+    
+    try {
+        const response = await fetch('https://baokmedia.myspreadshop.de/api/v1/shops/1553354/sellables');
+        if (!response.ok) throw new Error('API fetch failed');
+        const data = await response.json();
+        const sellables = data.sellables || [];
+        
+        if (sellables.length === 0) return;
+        
+        // Clear static placeholders
+        grid.innerHTML = '';
+        
+        // Take the first 3 products to display
+        const itemsToShow = sellables.slice(0, 3);
+        
+        itemsToShow.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            // Generate deep link to Spreadshop product details page
+            card.onclick = () => {
+                window.location.hash = `#!/sellable/${item.sellableId}`;
+            };
+            
+            // Format price amount
+            const price = typeof item.price.amount === 'number' 
+                ? `${item.price.amount.toFixed(2).replace('.', ',')} €`
+                : '34,90 €';
+                
+            // Render color dots if appearances are available
+            let colorsHtml = '';
+            if (item.appearanceIds && item.appearanceIds.length > 0) {
+                colorsHtml = `<div class="product-colors">`;
+                
+                // Map common Spreadshop appearance IDs to aesthetic hexadecimal color codes
+                const colorMap = {
+                    '1': '#ffffff',     // White
+                    '1271': '#d7d0c5',  // Sand
+                    '1250': '#363432',  // Anthracite / Charcoal
+                    '1265': '#2b2b2a',  // Black
+                    '1259': '#1e1c1b',  // Deep Charcoal
+                    '270': '#6c7a6b',   // Sage Green
+                    '805': '#4a423a',   // Walnut Brown
+                    '689': '#cfc7bc',   // Oatmeal / Light Grey
+                    '843': '#9a958e',   // Warm Taupe
+                    '195': '#414f6b',   // Navy Blue
+                    '1254': '#b5a596'   // Muted Ochre
+                };
+                
+                item.appearanceIds.slice(0, 4).forEach((appId, idx) => {
+                    const hex = colorMap[appId] || '#c9c0b3';
+                    const isActive = appId === item.defaultAppearanceId ? 'active' : '';
+                    colorsHtml += `<span class="color-dot ${isActive}" style="background-color: ${hex};" title="Farbe ID ${appId}"></span>`;
+                });
+                colorsHtml += `</div>`;
+            }
+            
+            card.innerHTML = `
+                <div class="product-img-wrapper">
+                    <img src="${item.previewImage.url}" alt="${item.name}" class="product-image" loading="lazy">
+                    <span class="badge">Original</span>
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">${item.name}</h3>
+                    <p class="product-price">${price}</p>
+                    ${colorsHtml}
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+        
+        // Re-initialize color dots click listeners
+        initColorDots();
+        
+    } catch (err) {
+        console.warn('Could not load dynamic bestsellers from Spreadshop:', err);
     }
 }
 
