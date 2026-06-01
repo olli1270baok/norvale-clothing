@@ -442,8 +442,25 @@ async function loadBestsellers() {
         // Clear static placeholders
         grid.innerHTML = '';
         
-        // Take the first 3 products to display
-        const itemsToShow = sellables.slice(0, 3);
+        // Select specific bestsellers for dynamic showcase (or fallback if not found)
+        const targetIds = [
+            'BvV979L9aEIXM03QAEL1-20-22', // NØ Collection – Nordic Monogram Hoodie
+            'MXrO22ObrZuG9ZvMmAY5-1155-33', // nørvale Nordic Badge Shirt
+            'MXrO22ObrZuG9ZvMmAY5-4179-22'  // nørvale Premium Hoodie
+        ];
+        
+        let itemsToShow = [];
+        targetIds.forEach(id => {
+            const found = sellables.find(item => item.sellableId === id);
+            if (found) {
+                itemsToShow.push(found);
+            }
+        });
+        
+        // Fallback if target IDs are not found or incomplete
+        if (itemsToShow.length < 3) {
+            itemsToShow = sellables.slice(0, 3);
+        }
         
         itemsToShow.forEach(item => {
             const card = document.createElement('div');
@@ -467,11 +484,13 @@ async function loadBestsellers() {
                 // Map common Spreadshop appearance IDs to aesthetic hexadecimal color codes
                 const colorMap = {
                     '1': '#ffffff',     // White
+                    '1247': '#d7d0c5',  // Cream/Sand
                     '1271': '#d7d0c5',  // Sand
                     '1250': '#363432',  // Anthracite / Charcoal
                     '1265': '#2b2b2a',  // Black
                     '1259': '#1e1c1b',  // Deep Charcoal
                     '270': '#6c7a6b',   // Sage Green
+                    '1274': '#6c7a6b',  // Sage Green alternative
                     '805': '#4a423a',   // Walnut Brown
                     '689': '#cfc7bc',   // Oatmeal / Light Grey
                     '843': '#9a958e',   // Warm Taupe
@@ -487,10 +506,27 @@ async function loadBestsellers() {
                 colorsHtml += `</div>`;
             }
             
+            // Determine badge translation key
+            let badgeKey = 'badge_essential';
+            if (item.sellableId === 'BvV979L9aEIXM03QAEL1-20-22') {
+                badgeKey = 'badge_new';
+            } else if (item.sellableId === 'MXrO22ObrZuG9ZvMmAY5-4179-22') {
+                badgeKey = 'badge_premium';
+            } else if (item.sellableId === 'MXrO22ObrZuG9ZvMmAY5-1155-33') {
+                badgeKey = 'badge_essential';
+            } else {
+                badgeKey = 'badge_essential';
+            }
+            
+            const currentLang = localStorage.getItem('norvale_lang') || 'de';
+            const badgeText = translations[currentLang] && translations[currentLang][badgeKey] 
+                ? translations[currentLang][badgeKey] 
+                : 'Essential';
+            
             card.innerHTML = `
                 <div class="product-img-wrapper">
                     <img src="${item.previewImage.url}" alt="${item.name}" class="product-image" loading="lazy">
-                    <span class="badge">Original</span>
+                    <span class="badge">${badgeText}</span>
                 </div>
                 <div class="product-details">
                     <h3 class="product-name">${item.name}</h3>
@@ -514,7 +550,7 @@ async function loadBestsellers() {
  */
 const translations = {
     de: {
-        announcement: "Kostenloser Versand für alle Bestellungen ab 150 €",
+        announcement: "Kostenloser Versand für alle Bestellungen ab 199 €",
         nav_home: "Home",
         nav_shop: "Shop",
         nav_collections: "Kollektionen",
@@ -546,6 +582,7 @@ const translations = {
         best_view_all: "Alle Produkte ansehen →",
         badge_essential: "Essential",
         badge_premium: "Premium",
+        badge_new: "Neu",
         shop_tag: "Offizieller Store",
         shop_title: "nørvale Online-Shop",
         shop_desc: "Bestelle unsere Kollektionen direkt über den eingebetteten Store. Sicher, schnell und direkt geliefert.",
@@ -600,7 +637,7 @@ const translations = {
         legal_terms_content: `<h2>Allgemeine Geschäftsbedingungen (AGB)</h2><h3>1. Geltungsbereich</h3><p>Diese Bedingungen gelten für die Nutzung der Landingpage nørvaleclothing.store. Für Bestellungen im Online-Shop gelten gesonderte Bedingungen.</p><h3>2. Vertragspartner für Bestellungen</h3><p>Alle Verträge, Lieferungen und Serviceleistungen, die über den auf dieser Website eingebetteten Online-Shop getätigt werden, kommen ausschließlich zwischen dem Besteller und der <strong>sprd.net AG (Spreadshirt)</strong>, Gießerstraße 27, 04229 Leipzig, Deutschland zustande. Es gelten die allgemeinen Geschäftsbedingungen und Widerrufsbelehrungen von sprd.net AG, die im integrierten Shop-Widget einsehbar sind.</p><h3>3. Haftungsbeschränkung für Inhalte</h3><p>Wir erstellen die redaktionellen Inhalte dieser Landingpage mit größter Sorgfalt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte von verlinkten Spreadshirt-Produkten oder Preisen können wir jedoch keine Gewähr übernehmen, da diese direkt und dynamisch von Spreadshirt bereitgestellt werden.</p>`
     },
     en: {
-        announcement: "Free shipping on all orders over 150 €",
+        announcement: "Free shipping on all orders over 199 €",
         nav_home: "Home",
         nav_shop: "Shop",
         nav_collections: "Collections",
@@ -632,6 +669,7 @@ const translations = {
         best_view_all: "View all products →",
         badge_essential: "Essential",
         badge_premium: "Premium",
+        badge_new: "New",
         shop_tag: "Official Store",
         shop_title: "nørvale Online Shop",
         shop_desc: "Order our collections directly through the embedded store. Secure, fast, and delivered straight to you.",
