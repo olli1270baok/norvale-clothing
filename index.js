@@ -105,7 +105,7 @@ function handleUrlHash() {
         switchLegalTab('terms');
     } else if (hash === '#shop' || hash.startsWith('#!')) {
         // If it's a default Spreadshop redirect on initial load of a non-shop page, ignore it.
-        if (ignoreNextShopHashChange && (hash === '#!' || hash === '#!/' || hash === '#!/list')) {
+        if (ignoreNextShopHashChange && (hash === '#!' || hash === '#!/')) {
             ignoreNextShopHashChange = false; // Reset the flag so future navigation works
             if (activeViewId && activeViewId !== 'shop-view') {
                 const correctHash = activeViewId === 'home-view' ? '#home' : '#' + activeViewId.replace('-view', '');
@@ -302,7 +302,7 @@ function handleSearchSubmit(event) {
         // Redirect to shop view with search query hash
         window.location.hash = `#!/search?q=${encodeURIComponent(query)}`;
     } else {
-        window.location.hash = '#!/list';
+        window.location.hash = '#!/';
     }
 }
 window.handleSearchSubmit = handleSearchSubmit;
