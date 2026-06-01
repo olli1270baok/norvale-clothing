@@ -100,7 +100,7 @@
                     <h1 class="hero-title" data-i18n="hero_title">MADE TO LAST.</h1>
                     <p class="hero-description" data-i18n="hero_desc">Zeitloses Design. Nachhaltige Materialien. Kleidung inspiriert von der rauen Schönheit des Nordens.</p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="window.location.hash = '#!/list'" data-i18n="hero_btn_shop">Kollektion Entdecken</button>
+                        <button class="btn btn-primary" onclick="navigateToView('shop-view'); window.location.hash = '#!/list'" data-i18n="hero_btn_shop">Kollektion Entdecken</button>
                         <button class="btn btn-secondary" onclick="navigateToView('about-view')" data-i18n="hero_btn_about">Unsere Story</button>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                     <div class="products-grid">
                         <!-- Product 1 -->
                         <!-- Product 1 -->
-                        <div class="product-card" onclick="window.location.hash = '#!/sellable/BvV979L9aEIXM03QAEL1-20-22'">
+                        <div class="product-card" onclick="navigateToView('shop-view'); window.location.hash = '#!/sellable/BvV979L9aEIXM03QAEL1-20-22'">
                             <div class="product-img-wrapper">
                                 <img src="https://image.spreadshirtmedia.net/image-server/v1/products/T20A1247PA8410PT17X148Y24D359056231W9299H9422/views/1,width=500,height=500,appearanceId=1247,backgroundColor=f4e3cb,crop=list,modelId=16909/edles-noe-monogramm-als-minimalistisches-badge-im-skandinavischen-stil-zeitlos-klar-und-authentisch-gemacht-fuer-moderne-streetwear-mit-nordischem-u.jpg" alt="NØ Collection – Nordic Monogram Hoodie" class="product-image">
                                 <span class="badge" data-i18n="badge_new">Neu</span>
@@ -235,7 +235,7 @@
                         </div>
 
                         <!-- Product 2 -->
-                        <div class="product-card" onclick="window.location.hash = '#!/sellable/MXrO22ObrZuG9ZvMmAY5-1155-33'">
+                        <div class="product-card" onclick="navigateToView('shop-view'); window.location.hash = '#!/sellable/MXrO22ObrZuG9ZvMmAY5-1155-33'">
                             <div class="product-img-wrapper">
                                 <img src="https://image.spreadshirtmedia.net/image-server/v1/products/T1155A195PA2483PT32X50Y79D359024521W15201H12369/views/1,width=500,height=500,appearanceId=195,backgroundColor=f4e3cb,crop=list,modelId=12877/minimalistisches-noervale-design-im-nordisch-eleganten-stil-dezenter-premium-look-fuer-hoodies-shirts-und-accessoires-ruhig-klar-hochwertig-und-mo.jpg" alt="nørvale Nordic Badge Shirt" class="product-image">
                                 <span class="badge" data-i18n="badge_essential">Essential</span>
@@ -251,7 +251,7 @@
                         </div>
 
                         <!-- Product 3 -->
-                        <div class="product-card" onclick="window.location.hash = '#!/sellable/MXrO22ObrZuG9ZvMmAY5-4179-22'">
+                        <div class="product-card" onclick="navigateToView('shop-view'); window.location.hash = '#!/sellable/MXrO22ObrZuG9ZvMmAY5-4179-22'">
                             <div class="product-img-wrapper">
                                 <img src="https://image.spreadshirtmedia.net/image-server/v1/products/T4179A1259PA10032PT17X25Y17D359024521W25000H20342/views/1,width=500,height=500,appearanceId=1259,backgroundColor=f4e3cb,crop=list,modelId=23171/minimalistisches-noervale-design-im-nordisch-eleganten-stil-dezenter-premium-look-fuer-hoodies-shirts-und-accessoires-ruhig-klar-hochwertig-und-mo.jpg" alt="nørvale Premium Hoodie" class="product-image">
                                 <span class="badge" data-i18n="badge_premium">Premium</span>
@@ -264,6 +264,27 @@
                                     <span class="color-dot" style="background-color: #b5a596;" title="Muted Ochre"></span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Founders Section -->
+            <section class="section founders-section">
+                <div class="container">
+                    <div class="founders-grid">
+                        <div class="founders-image-wrapper animate-on-scroll">
+                            <img src="assets/quote_bg.png" alt="nørvale Gründerteam" class="founders-image">
+                        </div>
+                        <div class="founders-content">
+                            <span class="section-tag" data-i18n="founders_tag">Handgemachtes Konzept</span>
+                            <h2 class="founders-title" data-i18n="founders_title">Mit Herzblut &amp; Natur im Sinn.</h2>
+                            <p class="founders-text" data-i18n="founders_text">
+                                Hinter nørvale steht kein unpersönlicher Großkonzern, sondern ein kleines Gründerteam mit einer klaren Vision und einer großen Portion Herzblut.<br><br>
+                                nørvale entstand aus unserer Sehnsucht nach Klarheit, der ungezähmten skandinavischen Natur und Kleidung, auf die man sich verlassen kann. Wir stecken unzählige Stunden in die Auswahl ehrlicher, biologischer Materialien, minimalistischer Schnitte und zeitloser Details.<br><br>
+                                Für uns ist nørvale nicht einfach nur Kleidung – es ist ein Lebensgefühl von Freiheit, Langlebigkeit und Bewusstsein, das wir mit dir teilen möchten. Danke, dass du Teil unserer Reise bist.
+                            </p>
+                            <div class="founders-signature">nørvale team</div>
                         </div>
                     </div>
                 </div>
@@ -384,6 +405,8 @@
                     </div>
                 </div>
             </div>
+        </section>
+
         <!-- 5. LEGAL VIEW -->
         <section id="legal-view" class="view">
             <div class="container section legal-container">
@@ -466,7 +489,7 @@
                 <h3 data-i18n="footer_title_shop">Shop</h3>
                 <ul>
                     <li><a href="#!/list" data-target="shop-view" data-i18n="footer_shop_all">Alle Produkte</a></li>
-                    <li><a href="#!/search?q=t-shirt" data-target="shop-view" data-i18n="footer_shop_tshirts">T-Shirts</a></li>
+                    <li><a href="#!/search?q=shirt" data-target="shop-view" data-i18n="footer_shop_tshirts">T-Shirts</a></li>
                     <li><a href="#!/search?q=hoodie" data-target="shop-view" data-i18n="footer_shop_hoodies">Hoodies</a></li>
                     <li><a href="#!/search?q=accessoire" data-target="shop-view" data-i18n="footer_shop_accessories">Accessoires</a></li>
                 </ul>

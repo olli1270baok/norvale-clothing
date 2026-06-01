@@ -2,6 +2,8 @@
    nørvale clothing - Interactive Client Application Logic
    ========================================================================== */
 
+let ignoreNextShopHashChange = (window.location.hash === '' || window.location.hash === '#' || window.location.hash === '#home' || window.location.hash === '#about' || window.location.hash === '#collections' || window.location.hash === '#imprint' || window.location.hash === '#privacy' || window.location.hash === '#terms');
+
 document.addEventListener('DOMContentLoaded', () => {
     initLanguageSwitcher();
     initNavigation();
@@ -30,14 +32,20 @@ function initNavigation() {
             const href = link.getAttribute('href');
             
             if (targetId) {
-                // If it's a Spreadshop route (starts with #!), let the hash change naturally
+                // If it's a Spreadshop route (starts with #!), let the hash change naturally and ensure view transitions
                 if (href && href.startsWith('#!')) {
+                    navigateToView(targetId);
                     return;
                 }
                 
                 // Prevent default hash navigation to prevent Spreadshop script from hijacking
                 e.preventDefault();
                 navigateToView(targetId);
+                
+                // Update URL in address bar without triggering hashchange event
+                if (href) {
+                    history.pushState(null, null, href);
+                }
                 
                 // If it's a legal page link, switch to the correct tab directly
                 if (targetId === 'legal-view' && href) {
@@ -90,6 +98,16 @@ function handleUrlHash() {
         navigateToView('legal-view');
         switchLegalTab('terms');
     } else if (hash === '#shop' || hash.startsWith('#!')) {
+        // If it's a default Spreadshop redirect on initial load of a non-shop page, ignore it.
+        if (ignoreNextShopHashChange && (hash === '#!' || hash === '#!/' || hash === '#!/list')) {
+            ignoreNextShopHashChange = false; // Reset the flag so future navigation works
+            if (activeViewId && activeViewId !== 'shop-view') {
+                const correctHash = activeViewId === 'home-view' ? '#home' : '#' + activeViewId.replace('-view', '');
+                history.pushState(null, null, correctHash);
+            }
+            return;
+        }
+        ignoreNextShopHashChange = false; // Any other hash change resets the ignore flag
         navigateToView('shop-view');
     } else if (hash === '' || hash === '#') {
         // Only default to home on initial load or if we are already on home.
@@ -149,8 +167,9 @@ window.navigateToView = navigateToView;
  * Handle Shop Category Navigation
  */
 function navigateToShopCategory(category) {
+    navigateToView('shop-view'); // Switch view first to ensure we display it
     if (category === 't-shirts') {
-        window.location.hash = '#!/search?q=t-shirt';
+        window.location.hash = '#!/search?q=shirt';
     } else if (category === 'hoodies') {
         window.location.hash = '#!/search?q=hoodie';
     } else if (category === 'accessories') {
@@ -468,6 +487,7 @@ async function loadBestsellers() {
             
             // Generate deep link to Spreadshop product details page
             card.onclick = () => {
+                navigateToView('shop-view'); // Ensure shop view is visible
                 window.location.hash = `#!/sellable/${item.sellableId}`;
             };
             
@@ -602,6 +622,9 @@ const translations = {
         coll_row_title_2: "Nordic Heritage",
         coll_row_desc_2: "Unsere zeitlose Linie, die vom schlichten skandinavischen Lebensstil inspiriert ist. Dauerhaft im Sortiment und die perfekte Basis für jedes Outfit.",
         coll_row_btn_2: "Kollektion ansehen",
+        founders_tag: "Handgemachtes Konzept",
+        founders_title: "Mit Herzblut &amp; Natur im Sinn.",
+        founders_text: "Hinter nørvale steht kein unpersönlicher Großkonzern, sondern ein kleines Gründerteam mit einer klaren Vision und einer großen Portion Herzblut.<br><br>nørvale entstand aus unserer Sehnsucht nach Klarheit, der ungezähmten skandinavischen Natur und Kleidung, auf die man sich verlassen kann. Wir stecken unzählige Stunden in die Auswahl ehrlicher, biologischer Materialien, minimalistischer Schnitte und zeitloser Details.<br><br>Für uns ist nørvale nicht einfach nur Kleidung – es ist ein Lebensgefühl von Freiheit, Langlebigkeit und Bewusstsein, das wir mit dir teilen möchten. Danke, dass du Teil unserer Reise bist.",
         about_tag: "Unsere Philosophie",
         about_heading: "Die Seele des Nordens.",
         about_lead: "nørvale entstand aus der Sehnsucht nach Klarheit, Natur und langlebiger Kleidung. Unsere Designs spiegeln die weite, raue Landschaft des Nordens wider.",
@@ -689,6 +712,9 @@ const translations = {
         coll_row_title_2: "Nordic Heritage",
         coll_row_desc_2: "Our timeless line inspired by the simple Scandinavian lifestyle. Permanently in stock and the perfect foundation for any outfit.",
         coll_row_btn_2: "View Collection",
+        founders_tag: "Our Philosophy",
+        founders_title: "Crafted with heart, soul, and nature in mind.",
+        founders_text: "Behind nørvale is not an impersonal corporation, but a small team of founders with a clear vision and a whole lot of heart and soul.<br><br>nørvale was born from our longing for clarity, the untamed Scandinavian nature, and garments you can truly rely on. We spend countless hours selecting honest, organic materials, minimalist cuts, and timeless details.<br><br>For us, nørvale is not just clothing – it is a lifestyle of freedom, longevity, and awareness that we want to share with you. Thank you for being a part of our journey.",
         about_tag: "Our Philosophy",
         about_heading: "The Soul of the North.",
         about_lead: "nørvale was born from a desire for clarity, nature, and long-lasting garments. Our designs reflect the wide, raw landscape of the North.",
