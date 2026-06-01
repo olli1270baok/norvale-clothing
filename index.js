@@ -2,7 +2,7 @@
    nørvale clothing - Interactive Client Application Logic
    ========================================================================== */
 
-let ignoreNextShopHashChange = (window.location.hash === '' || window.location.hash === '#' || window.location.hash === '#home' || window.location.hash === '#about' || window.location.hash === '#collections' || window.location.hash === '#imprint' || window.location.hash === '#privacy' || window.location.hash === '#terms');
+let ignoreNextShopHashChange = (window.location.hash === '' || window.location.hash === '#' || window.location.hash === '#home' || window.location.hash === '#about' || window.location.hash === '#collections' || window.location.hash === '#sustainability' || window.location.hash === '#values' || window.location.hash === '#contact' || window.location.hash === '#imprint' || window.location.hash === '#privacy' || window.location.hash === '#terms');
 
 document.addEventListener('DOMContentLoaded', () => {
     initLanguageSwitcher();
@@ -86,6 +86,12 @@ function handleUrlHash() {
         navigateToView('collections-view');
     } else if (hash === '#about' || hash === '#!/about') {
         navigateToView('about-view');
+    } else if (hash === '#sustainability' || hash === '#!/sustainability') {
+        navigateToView('sustainability-view');
+    } else if (hash === '#values' || hash === '#!/values') {
+        navigateToView('values-view');
+    } else if (hash === '#contact' || hash === '#!/contact') {
+        navigateToView('contact-view');
     } else if (hash === '#home' || hash === '#!/home') {
         navigateToView('home-view');
     } else if (hash === '#imprint' || hash === '#!/imprint') {
@@ -350,6 +356,34 @@ function initNewsletter() {
         }
     };
 }
+
+/**
+ * Premium Contact Form Submission Handler
+ */
+window.handleContactSubmit = function(event) {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.querySelector('#contact-name').value;
+    const email = form.querySelector('#contact-email').value;
+    const message = form.querySelector('#contact-message').value;
+    
+    if (name && email && message) {
+        const parent = form.parentNode;
+        const currentLang = localStorage.getItem('norvale_lang') || 'de';
+        const titleText = currentLang === 'de' ? 'Vielen Dank!' : 'Thank you!';
+        const bodyText = currentLang === 'de' 
+            ? `Hallo ${name}, deine Nachricht wurde erfolgreich übermittelt. Wir werden uns unter <strong>${email}</strong> in Kürze bei dir melden.`
+            : `Hello ${name}, your message has been sent successfully. We will get back to you at <strong>${email}</strong> shortly.`;
+        
+        parent.innerHTML = `
+            <div class="contact-success animate-fade-in" style="padding: 2rem; background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-sm); color: var(--color-text-primary);">
+                <h4 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--color-accent); text-transform: uppercase;">${titleText}</h4>
+                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-secondary);">${bodyText}</p>
+            </div>
+        `;
+        console.log(`Kontakt-Nachricht von ${name} (${email}): ${message}`);
+    }
+};
 
 /**
  * Setup Spreadshop Loading & Integration Handler
@@ -632,6 +666,37 @@ const translations = {
         about_story_desc_1: "Wir glauben nicht an schnelllebige Trends. Jedes nørvale-Stück ist so konzipiert, dass es vielseitig kombinierbar ist und Saison für Saison getragen werden kann.",
         about_story_title_2: "Verantwortung & Materialien",
         about_story_desc_2: "In Zusammenarbeit mit Spreadshop setzen wir auf eine bedarfsgerechte Produktion (Print-on-Demand), um Textilmüll und Überproduktion zu minimieren. Wir bevorzugen biologische Fasern und umweltfreundliche Druckverfahren.",
+        sustain_tag: "Verantwortung",
+        sustain_title: "Nachhaltigkeit bei nørvale",
+        sustain_intro: "Unsere Natur ist nicht nur Inspiration – sie ist unsere Lebensgrundlage. Deshalb tun wir alles, um sie zu schützen.",
+        sustain_card_title_1: "On-Demand Produktion",
+        sustain_card_desc_1: "Wir drucken erst, wenn du bestellst. Das vermeidet Überproduktion und schont wertvolle Ressourcen.",
+        sustain_card_title_2: "GOTS-Bio-Baumwolle",
+        sustain_card_desc_2: "Unsere Kleidung besteht aus kontrolliert biologisch angebauter Baumwolle – ohne Pestizide oder giftige Chemie.",
+        sustain_card_title_3: "Plastikfreier Versand",
+        sustain_card_desc_3: "Deine Bestellung wird in recycelten und plastikfreien Papierverpackungen klimaneutral an dich versendet.",
+        values_view_tag: "Wofür wir stehen",
+        values_view_title: "Unsere Werte",
+        values_view_intro: "Bei nørvale geht es um mehr als Kleidung. Es geht um eine Lebenseinstellung.",
+        value_card_title_1: "Nordische Gelassenheit",
+        value_card_desc_1: "Unsere Entwürfe strahlen die Einfachheit und Klarheit skandinavischer Landschaften aus. Ruhe statt Hektik, Design statt Modewahn.",
+        value_card_title_2: "Langlebige Qualität",
+        value_card_desc_2: "Ein Kleidungsstück sollte dich über Jahre begleiten. Wir designen Essentials, die langlebig, robust und zeitlos bleiben.",
+        value_card_title_3: "Echter Minimalismus",
+        value_card_desc_3: "Wir glauben an den \"Pursuit of Less\" – weniger kaufen, aber dafür bewusster auswählen und pflegen.",
+        contact_tag: "Schreib uns",
+        contact_heading: "Kontaktiere das nørvale Team",
+        contact_desc: "Hast du Fragen zu deiner Bestellung, unseren Produkten oder Kooperationen? Wir sind für dich da.",
+        contact_detail_label_email: "E-Mail",
+        contact_detail_label_hours: "Support-Zeiten",
+        contact_detail_val_hours: "Montag – Freitag: 09:00 – 17:00 Uhr",
+        contact_form_name: "Dein Name",
+        contact_form_email: "Deine E-Mail",
+        contact_form_msg: "Nachricht",
+        contact_form_submit: "Nachricht senden",
+        contact_placeholder_name: "z.B. Anna Müller",
+        contact_placeholder_email: "z.B. anna@email.de",
+        contact_placeholder_msg: "Wie können wir dir helfen?",
         search_placeholder: "Suche nach Produkten...",
         search_btn: "Suchen",
         search_suggestions: "Beliebte Suchanfragen: <span>Hoodies</span>, <span>T-Shirts</span>, <span>Caps</span>",
@@ -722,6 +787,37 @@ const translations = {
         about_story_desc_1: "We do not believe in fast-paced trends. Each nørvale piece is designed to be versatile and worn season after season.",
         about_story_title_2: "Responsibility & Materials",
         about_story_desc_2: "In partnership with Spreadshop, we rely on print-on-demand production to minimize textile waste and overproduction. We prefer organic fibers and eco-friendly printing methods.",
+        sustain_tag: "Responsibility",
+        sustain_title: "Sustainability at nørvale",
+        sustain_intro: "Nature is not just our inspiration – it is our source of life. That is why we do everything to protect it.",
+        sustain_card_title_1: "On-Demand Production",
+        sustain_card_desc_1: "We print only when you order. This prevents overproduction and conserves valuable resources.",
+        sustain_card_title_2: "GOTS Organic Cotton",
+        sustain_card_desc_2: "Our clothing is made from certified organic cotton – without pesticides or toxic chemicals.",
+        sustain_card_title_3: "Plastic-Free Shipping",
+        sustain_card_desc_3: "Your order is shipped climate-neutrally in recycled, plastic-free paper packaging.",
+        values_view_tag: "What we stand for",
+        values_view_title: "Our Values",
+        values_view_intro: "At nørvale, it is about more than just clothing. It is about a mindset.",
+        value_card_title_1: "Nordic Serenity",
+        value_card_desc_1: "Our designs reflect the simplicity and clarity of Scandinavian landscapes. Quietness over hecticness, purpose over fashion trends.",
+        value_card_title_2: "Long-lasting Quality",
+        value_card_desc_2: "A garment should accompany you for years. We design essentials that remain durable, robust, and timeless.",
+        value_card_title_3: "Conscious Minimalism",
+        value_card_desc_3: "We believe in the \"Pursuit of Less\" – buying less, but selecting and caring for items more consciously.",
+        contact_tag: "Get in touch",
+        contact_heading: "Contact the nørvale Team",
+        contact_desc: "Do you have questions about your order, our products, or collaborations? We are here to help.",
+        contact_detail_label_email: "Email",
+        contact_detail_label_hours: "Support Hours",
+        contact_detail_val_hours: "Monday – Friday: 09:00 AM – 05:00 PM",
+        contact_form_name: "Your Name",
+        contact_form_email: "Your Email",
+        contact_form_msg: "Message",
+        contact_form_submit: "Send Message",
+        contact_placeholder_name: "e.g. Jane Doe",
+        contact_placeholder_email: "e.g. jane@email.com",
+        contact_placeholder_msg: "How can we help you?",
         search_placeholder: "Search for products...",
         search_btn: "Search",
         search_suggestions: "Popular searches: <span>Hoodies</span>, <span>T-Shirts</span>, <span>Caps</span>",
