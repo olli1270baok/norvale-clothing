@@ -497,9 +497,9 @@ async function loadBestsellers() {
         
         // Select specific bestsellers for dynamic showcase (or fallback if not found)
         const targetIds = [
-            'BvV979L9aEIXM03QAEL1-20-22', // NØ Collection – Nordic Monogram Hoodie
-            'MXrO22ObrZuG9ZvMmAY5-1155-33', // nørvale Nordic Badge Shirt
-            'MXrO22ObrZuG9ZvMmAY5-4179-22'  // nørvale Premium Hoodie
+            'ybQyJ8mRgZTdxgE8Mgmy-20-22', // Nø Statement Hoodie
+            'ybQyJ8mRgZTdxgE8Mgmy-1155-33', // Nø Statement T-Shirt
+            'NnQjBgmVJ0T8rB079exd-20-22'  // Nørvale Nordic Badge Hoodie
         ];
         
         let itemsToShow = [];
@@ -562,11 +562,11 @@ async function loadBestsellers() {
             
             // Determine badge translation key
             let badgeKey = 'badge_essential';
-            if (item.sellableId === 'BvV979L9aEIXM03QAEL1-20-22') {
+            if (item.sellableId === 'ybQyJ8mRgZTdxgE8Mgmy-20-22') {
                 badgeKey = 'badge_new';
-            } else if (item.sellableId === 'MXrO22ObrZuG9ZvMmAY5-4179-22') {
+            } else if (item.sellableId === 'NnQjBgmVJ0T8rB079exd-20-22') {
                 badgeKey = 'badge_premium';
-            } else if (item.sellableId === 'MXrO22ObrZuG9ZvMmAY5-1155-33') {
+            } else if (item.sellableId === 'ybQyJ8mRgZTdxgE8Mgmy-1155-33') {
                 badgeKey = 'badge_essential';
             } else {
                 badgeKey = 'badge_essential';
@@ -644,18 +644,15 @@ const translations = {
         shop_fallback_btn: "Direkt zu Spreadshop öffnen",
         coll_tag: "Unsere Drops",
         coll_title: "Kollektionen",
-        coll_row_tag_0: "Neu eingetroffen",
-        coll_row_title_0: "NØ Collection – Nordic Monogram",
-        coll_row_desc_0: "Minimalistisches Monogramm-Design. Die NØ Collection verkörpert moderne nordische Ästhetik mit klaren Buchstabenformen und einer markanten Linienführung.",
-        coll_row_btn_0: "Drop Shoppen",
-        coll_row_tag_1: "Neu eingetroffen",
-        coll_row_title_1: "Essential Collection Drop 02",
-        coll_row_desc_1: "Erlesene Essentials, designt für Klarheit, Komfort und Bewegung. Gefertigt aus feinster Bio-Baumwolle und mit dezentem Logo-Stick.",
-        coll_row_btn_1: "Drop Shoppen",
-        coll_row_tag_2: "Klassiker",
-        coll_row_title_2: "Nordic Heritage",
-        coll_row_desc_2: "Unsere zeitlose Linie, die vom schlichten skandinavischen Lebensstil inspiriert ist. Dauerhaft im Sortiment und die perfekte Basis für jedes Outfit.",
-        coll_row_btn_2: "Kollektion ansehen",
+        coll_noe_tag: "Neu eingetroffen",
+        coll_noe_title: "Nø Statement Collection",
+        coll_noe_desc: "Clean, reduziert und ausdrucksstark: Nø ist minimalistisches Statement-Wear mit nordischem Stil und klarer Haltung.",
+        coll_noe_btn: "Kollektion shoppen",
+        coll_norvale_tag: "Heritage Line",
+        coll_norvale_title: "Nørvale Collection – Nordic Style",
+        coll_norvale_desc: "Klassische Schnitte, feine Typografie und unser markantes Logo-Stick. Diese Linie verkörpert die Essenz des nordischen Minimalismus.",
+        coll_norvale_btn: "Kollektion ansehen",
+        coll_preview_title: "Highlights der Kollektion",
         founders_tag: "Handgemachtes Konzept",
         founders_title: "Mit Herzblut &amp; Natur im Sinn.",
         founders_text: "Hinter nørvale steht kein unpersönlicher Großkonzern, sondern ein kleines Gründerteam mit einer klaren Vision und einer großen Portion Herzblut.<br><br>nørvale entstand aus unserer Sehnsucht nach Klarheit, der ungezähmten skandinavischen Natur und Kleidung, auf die man sich verlassen kann. Wir stecken unzählige Stunden in die Auswahl ehrlicher, biologischer Materialien, minimalistischer Schnitte und zeitloser Details.<br><br>Für uns ist nørvale nicht einfach nur Kleidung – es ist ein Lebensgefühl von Freiheit, Langlebigkeit und Bewusstsein, das wir mit dir teilen möchten. Danke, dass du Teil unserer Reise bist.",
@@ -765,18 +762,15 @@ const translations = {
         shop_fallback_btn: "Open Spreadshop directly",
         coll_tag: "Our Drops",
         coll_title: "Collections",
-        coll_row_tag_0: "New In",
-        coll_row_title_0: "NØ Collection – Nordic Monogram",
-        coll_row_desc_0: "Minimalist monogram design. The NØ Collection embodies modern Nordic aesthetics with clean letterforms and striking linework.",
-        coll_row_btn_0: "Shop Drop",
-        coll_row_tag_1: "New Arrivals",
-        coll_row_title_1: "Essential Collection Drop 02",
-        coll_row_desc_1: "Elevated essentials designed for clarity, comfort, and movement. Crafted from the finest organic cotton with subtle logo embroidery.",
-        coll_row_btn_1: "Shop Drop",
-        coll_row_tag_2: "Classics",
-        coll_row_title_2: "Nordic Heritage",
-        coll_row_desc_2: "Our timeless line inspired by the simple Scandinavian lifestyle. Permanently in stock and the perfect foundation for any outfit.",
-        coll_row_btn_2: "View Collection",
+        coll_noe_tag: "New In",
+        coll_noe_title: "Nø Statement Collection",
+        coll_noe_desc: "Clean, reduced, and expressive: Nø is minimalist statement wear with Nordic style and a clear attitude.",
+        coll_noe_btn: "Shop Collection",
+        coll_norvale_tag: "Heritage Line",
+        coll_norvale_title: "Nørvale Collection – Nordic Style",
+        coll_norvale_desc: "Classic cuts, fine typography, and our signature logo embroidery. This line embodies the essence of Nordic minimalism.",
+        coll_norvale_btn: "View Collection",
+        coll_preview_title: "Highlights of the Collection",
         founders_tag: "Our Philosophy",
         founders_title: "Crafted with heart, soul, and nature in mind.",
         founders_text: "Behind nørvale is not an impersonal corporation, but a small team of founders with a clear vision and a whole lot of heart and soul.<br><br>nørvale was born from our longing for clarity, the untamed Scandinavian nature, and garments you can truly rely on. We spend countless hours selecting honest, organic materials, minimalist cuts, and timeless details.<br><br>For us, nørvale is not just clothing – it is a lifestyle of freedom, longevity, and awareness that we want to share with you. Thank you for being a part of our journey.",
