@@ -604,7 +604,7 @@ async function loadBestsellers() {
  */
 const translations = {
     de: {
-        announcement: "Kostenloser Versand für alle Bestellungen ab 199 €",
+        announcement: "Kostenloser Versand für alle Bestellungen ab 99,99 €",
         nav_home: "Home",
         nav_shop: "Shop",
         nav_collections: "Kollektionen",
@@ -722,7 +722,7 @@ const translations = {
         legal_terms_content: `<h2>Allgemeine Geschäftsbedingungen (AGB)</h2><h3>1. Geltungsbereich</h3><p>Diese Bedingungen gelten für die Nutzung der Landingpage nørvaleclothing.store. Für Bestellungen im Online-Shop gelten gesonderte Bedingungen.</p><h3>2. Vertragspartner für Bestellungen</h3><p>Alle Verträge, Lieferungen und Serviceleistungen, die über den auf dieser Website eingebetteten Online-Shop getätigt werden, kommen ausschließlich zwischen dem Besteller und der <strong>sprd.net AG (Spreadshirt)</strong>, Gießerstraße 27, 04229 Leipzig, Deutschland zustande. Es gelten die allgemeinen Geschäftsbedingungen und Widerrufsbelehrungen von sprd.net AG, die im integrierten Shop-Widget einsehbar sind.</p><h3>3. Haftungsbeschränkung für Inhalte</h3><p>Wir erstellen die redaktionellen Inhalte dieser Landingpage mit größter Sorgfalt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte von verlinkten Spreadshirt-Produkten oder Preisen können wir jedoch keine Gewähr übernehmen, da diese direkt und dynamisch von Spreadshirt bereitgestellt werden.</p>`
     },
     en: {
-        announcement: "Free shipping on all orders over 199 €",
+        announcement: "Free shipping on all orders over 99.99 €",
         nav_home: "Home",
         nav_shop: "Shop",
         nav_collections: "Collections",
