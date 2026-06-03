@@ -1380,6 +1380,102 @@ blockquote {
     display: none !important; /* Hide defaults if they compete with our layout */
 }
 
+/* 1. Headings (e.g. "Produktvorschau") */
+#myShop h1, 
+#myShop h2, 
+#myShop h3, 
+#myShop .sprd-headline, 
+#myShop [class*="headline"],
+#myShop [class*="startpage__title"],
+#myShop [class*="startpage__headline"] {
+    font-family: var(--font-heading) !important;
+    font-weight: 300 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    color: var(--color-text-primary) !important;
+    font-size: 1.6rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    text-align: center !important;
+}
+
+/* 2. Premium Buttons (override default orange/yellow/blue buttons) */
+#myShop .sprd-btn,
+#myShop .sprd-button,
+#myShop button[class*="btn"],
+#myShop a[class*="btn"],
+#myShop [class*="button"],
+#myShop [class*="startpage__button"] {
+    background-color: var(--color-text-primary) !important;
+    color: var(--color-white) !important;
+    border-radius: var(--border-radius-sm) !important;
+    font-family: var(--font-heading) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    transition: var(--transition-smooth) !important;
+    border: 1px solid var(--color-text-primary) !important;
+    padding: 0.8rem 2.2rem !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+}
+
+#myShop .sprd-btn:hover,
+#myShop .sprd-button:hover,
+#myShop button[class*="btn"]:hover,
+#myShop a[class*="btn"]:hover,
+#myShop [class*="button"]:hover,
+#myShop [class*="startpage__button"]:hover {
+    background-color: transparent !important;
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-text-primary) !important;
+}
+
+/* 3. Product Cards inside the Shop Grid */
+#myShop .sprd-product-card,
+#myShop [class*="product-card"],
+#myShop [class*="product-grid__item"] {
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--border-radius-sm) !important;
+    background-color: var(--color-bg-secondary) !important; /* Matches our light off-white sections */
+    box-shadow: none !important;
+    transition: var(--transition-smooth) !important;
+    padding: 1rem !important;
+}
+
+#myShop .sprd-product-card:hover,
+#myShop [class*="product-card"]:hover,
+#myShop [class*="product-grid__item"]:hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--color-accent-light) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Hide default borders or backgrounds on product images */
+#myShop [class*="product-card"] img,
+#myShop .sprd-product-card img {
+    border-radius: var(--border-radius-sm) !important;
+    mix-blend-mode: multiply !important; /* Helps blend any grey product backgrounds cleanly */
+}
+
+/* 4. Filter, sorting and category selectors */
+#myShop select,
+#myShop [class*="select"],
+#myShop [class*="filter"] {
+    font-family: var(--font-body) !important;
+    border-radius: var(--border-radius-sm) !important;
+    border: 1px solid var(--color-border) !important;
+}
+
+/* 5. Hide banner background images or adjust startpage style if they feel cluttered */
+#myShop [class*="startpage__banner"] {
+    border-radius: var(--border-radius-sm) !important;
+    overflow: hidden !important;
+}
+
+
 /* --- Legal Section Styling --- */
 .legal-container {
     max-width: 800px;
