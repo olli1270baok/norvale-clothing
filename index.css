@@ -1400,11 +1400,11 @@ blockquote {
 }
 
 /* 2. Premium Buttons (override default orange/yellow/blue buttons) */
-#myShop .sprd-btn,
-#myShop .sprd-button,
-#myShop button[class*="btn"],
-#myShop a[class*="btn"],
-#myShop [class*="button"],
+#myShop .sprd-btn:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
+#myShop .sprd-button:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
+#myShop button[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
+#myShop a[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
+#myShop [class*="button"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="navigation"]),
 #myShop [class*="startpage__button"] {
     background-color: var(--color-text-primary) !important;
     color: var(--color-white) !important;
@@ -1422,11 +1422,11 @@ blockquote {
     display: inline-block !important;
 }
 
-#myShop .sprd-btn:hover,
-#myShop .sprd-button:hover,
-#myShop button[class*="btn"]:hover,
-#myShop a[class*="btn"]:hover,
-#myShop [class*="button"]:hover,
+#myShop .sprd-btn:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
+#myShop .sprd-button:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
+#myShop button[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
+#myShop a[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
+#myShop [class*="button"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="navigation"]):hover,
 #myShop [class*="startpage__button"]:hover {
     background-color: transparent !important;
     color: var(--color-text-primary) !important;
@@ -1474,6 +1474,164 @@ blockquote {
     border-radius: var(--border-radius-sm) !important;
     overflow: hidden !important;
 }
+
+/* 6. Spreadshop Navigation and Category Bar Overrides (removes ugly black bars) */
+#myShop .sprd-navigation,
+#myShop [class*="navigation"],
+#myShop [class*="nav-bar"],
+#myShop [class*="category-menu"],
+#myShop [class*="category-list"],
+#myShop [class*="menu-bar"] {
+    background-color: var(--color-bg-primary) !important;
+    background: var(--color-bg-primary) !important;
+    border: 1px solid var(--color-border) !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem 1rem !important;
+    color: var(--color-text-primary) !important;
+}
+
+#myShop .sprd-navigation *,
+#myShop [class*="navigation"] *,
+#myShop [class*="nav-bar"] *,
+#myShop [class*="category-menu"] *,
+#myShop [class*="category-list"] *,
+#myShop [class*="menu-bar"] * {
+    background-color: transparent !important;
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-border) !important;
+}
+
+/* Hover effects for links and active categories */
+#myShop [class*="navigation"] a:hover,
+#myShop [class*="nav-bar"] a:hover,
+#myShop [class*="category-menu"] a:hover,
+#myShop [class*="navigation"] button:hover,
+#myShop [class*="nav-bar"] button:hover,
+#myShop [class*="category-menu"] button:hover {
+    color: var(--color-accent) !important;
+}
+
+#myShop [class*="navigation"] [class*="active"] *,
+#myShop [class*="nav-bar"] [class*="active"] *,
+#myShop [class*="category-menu"] [class*="active"] *,
+#myShop [class*="navigation"] [class*="active"],
+#myShop [class*="nav-bar"] [class*="active"],
+#myShop [class*="category-menu"] [class*="active"] {
+    color: var(--color-accent) !important;
+    font-weight: 500 !important;
+}
+
+/* Dropdown menus / Popovers (e.g. click on "Männer" or "Frauen" category) */
+#myShop [class*="dropdown"],
+#myShop [class*="popover"],
+#myShop [class*="menu-dropdown"],
+#myShop [class*="active-filters"] {
+    background-color: var(--color-bg-primary) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+#myShop [class*="dropdown"] *,
+#myShop [class*="popover"] * {
+    color: var(--color-text-primary) !important;
+}
+
+#myShop [class*="dropdown"] *:hover,
+#myShop [class*="popover"] *:hover {
+    background-color: var(--color-bg-secondary) !important;
+    color: var(--color-accent) !important;
+}
+
+/* 7. Spreadshop Product Detail Page Image Container & Detail View Overrides (removes black bars) */
+#myShop [class*="detail"] [class*="image"],
+#myShop [class*="detail"] [class*="img"],
+#myShop [class*="detail"] [class*="gallery"],
+#myShop [class*="detail"] [class*="slider"],
+#myShop [class*="detail"] [class*="wrapper"],
+#myShop [class*="detail"] [class*="container"],
+#myShop [class*="detail"] [class*="view"],
+#myShop [class*="detail"] [class*="stage"],
+#myShop [class*="detail-image"],
+#myShop [class*="detail-img"],
+#myShop [class*="img-container"],
+#myShop [class*="image-container"],
+#myShop [class*="image-wrapper"],
+#myShop [class*="img-wrapper"],
+#myShop [class*="stage__stage"],
+#myShop [class*="product-image"],
+#myShop [class*="gallery__image-container"],
+#myShop [class*="sprd-img-container"] {
+    background-color: var(--color-bg-primary) !important;
+    background: var(--color-bg-primary) !important;
+}
+
+/* Ensure no elements inside the detail view have random black backgrounds */
+#myShop [class*="detail"] [class*="description"],
+#myShop [class*="detail"] [class*="tabs"],
+#myShop [class*="detail"] [class*="accordion"],
+#myShop [class*="detail"] [class*="panel"],
+#myShop [class*="size-select"],
+#myShop [class*="quantity-select"],
+#myShop [class*="appearance-select"] {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: var(--color-text-primary) !important;
+}
+
+/* 8. Pagination and Page Size selectors at the bottom of the shop grid */
+#myShop [class*="pagination"],
+#myShop [class*="pagination"] *,
+#myShop [class*="page-size"],
+#myShop [class*="page-size"] *,
+#myShop [class*="limit"],
+#myShop [class*="limit"] *,
+#myShop [class*="items-per-page"],
+#myShop [class*="items-per-page"] * {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-border) !important;
+    box-shadow: none !important;
+}
+
+#myShop [class*="pagination"] button,
+#myShop [class*="pagination"] a,
+#myShop [class*="page-size"] button,
+#myShop [class*="page-size"] a,
+#myShop [class*="limit"] button,
+#myShop [class*="limit"] a {
+    border: 1px solid var(--color-border) !important;
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    border-radius: var(--border-radius-sm) !important;
+    transition: var(--transition-smooth) !important;
+    display: inline-block !important;
+    margin: 0 0.25rem !important;
+}
+
+#myShop [class*="pagination"] button:hover,
+#myShop [class*="pagination"] a:hover,
+#myShop [class*="page-size"] button:hover,
+#myShop [class*="page-size"] a:hover,
+#myShop [class*="limit"] button:hover,
+#myShop [class*="limit"] a:hover {
+    background-color: var(--color-bg-secondary) !important;
+    border-color: var(--color-text-primary) !important;
+    color: var(--color-text-primary) !important;
+}
+
+#myShop [class*="pagination"] [class*="active"],
+#myShop [class*="pagination"] [class*="current"] {
+    background-color: var(--color-text-primary) !important;
+    border-color: var(--color-text-primary) !important;
+    color: var(--color-white) !important;
+}
+
 
 
 /* --- Legal Section Styling --- */

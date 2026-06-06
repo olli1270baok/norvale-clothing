@@ -499,7 +499,7 @@ async function loadBestsellers() {
         const targetIds = [
             'ybQyJ8mRgZTdxgE8Mgmy-20-22', // Nø Statement Hoodie
             'ybQyJ8mRgZTdxgE8Mgmy-1155-33', // Nø Statement T-Shirt
-            'NnQjBgmVJ0T8rB079exd-20-22'  // Nørvale Nordic Badge Hoodie
+            'nAdQz7Oan2HzlDnjEavN-20-22'  // Nordisches Norvale Logo mit Flagge Hoodie
         ];
         
         let itemsToShow = [];
@@ -566,6 +566,8 @@ async function loadBestsellers() {
                 badgeKey = 'badge_new';
             } else if (item.sellableId === 'NnQjBgmVJ0T8rB079exd-20-22') {
                 badgeKey = 'badge_premium';
+            } else if (item.sellableId === 'nAdQz7Oan2HzlDnjEavN-20-22') {
+                badgeKey = 'badge_new';
             } else if (item.sellableId === 'ybQyJ8mRgZTdxgE8Mgmy-1155-33') {
                 badgeKey = 'badge_essential';
             } else {
@@ -652,6 +654,10 @@ const translations = {
         coll_norvale_title: "Nørvale Collection – Nordic Style",
         coll_norvale_desc: "Klassische Schnitte, feine Typografie und unser markantes Logo-Stick. Diese Linie verkörpert die Essenz des nordischen Minimalismus.",
         coll_norvale_btn: "Kollektion ansehen",
+        coll_iceland_tag: "Special Drop",
+        coll_iceland_title: "Iceland Heritage Collection",
+        coll_iceland_desc: "Inspiriert von der rauen Vulkanlandschaft und den Gletschern Islands. Diese exklusive Linie verbindet die isländische Flagge mit der Seele von nørvale.",
+        coll_iceland_btn: "Kollektion shoppen",
         coll_preview_title: "Highlights der Kollektion",
         founders_tag: "Handgemachtes Konzept",
         founders_title: "Mit Herzblut &amp; Natur im Sinn.",
@@ -770,6 +776,10 @@ const translations = {
         coll_norvale_title: "Nørvale Collection – Nordic Style",
         coll_norvale_desc: "Classic cuts, fine typography, and our signature logo embroidery. This line embodies the essence of Nordic minimalism.",
         coll_norvale_btn: "View Collection",
+        coll_iceland_tag: "Special Drop",
+        coll_iceland_title: "Iceland Heritage Collection",
+        coll_iceland_desc: "Inspired by the raw volcanic landscape and glaciers of Iceland. This exclusive line combines the Icelandic flag with the soul of nørvale.",
+        coll_iceland_btn: "Shop Collection",
         coll_preview_title: "Highlights of the Collection",
         founders_tag: "Our Philosophy",
         founders_title: "Crafted with heart, soul, and nature in mind.",
