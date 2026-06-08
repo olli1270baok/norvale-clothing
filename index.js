@@ -562,7 +562,9 @@ async function loadBestsellers() {
             
             // Determine badge translation key
             let badgeKey = 'badge_essential';
-            if (item.sellableId === 'ybQyJ8mRgZTdxgE8Mgmy-20-22') {
+            if (item.sellableId.includes('oNdqmkw5') || item.sellableId.includes('gNL8RyaM') || item.sellableId.includes('BvyXM3R')) {
+                badgeKey = 'badge_limited';
+            } else if (item.sellableId === 'ybQyJ8mRgZTdxgE8Mgmy-20-22') {
                 badgeKey = 'badge_new';
             } else if (item.sellableId === 'NnQjBgmVJ0T8rB079exd-20-22') {
                 badgeKey = 'badge_premium';
@@ -579,10 +581,12 @@ async function loadBestsellers() {
                 ? translations[currentLang][badgeKey] 
                 : 'Essential';
             
+            const isLimited = badgeKey === 'badge_limited' ? 'badge-limited' : '';
+            
             card.innerHTML = `
                 <div class="product-img-wrapper">
                     <img src="${item.previewImage.url}" alt="${item.name}" class="product-image" loading="lazy">
-                    <span class="badge">${badgeText}</span>
+                    <span class="badge ${isLimited}">${badgeText}</span>
                 </div>
                 <div class="product-details">
                     <h3 class="product-name">${item.name}</h3>
@@ -639,6 +643,21 @@ const translations = {
         badge_essential: "Essential",
         badge_premium: "Premium",
         badge_new: "Neu",
+        badge_limited: "Limitiert",
+        tournament_home_tag: "Limitierter Drop",
+        tournament_home_title: "Summer Fan Edition",
+        tournament_home_desc: "Unterstütze dein Team im puren nordischen Stil. Limitiert, minimalistisch und nachhaltig gefertigt.",
+        tournament_germany_title: "Deutschland Edition",
+        tournament_germany_desc: "Das deutsche Sommerturnier-Design im sportlichen College-Stil.",
+        tournament_sweden_title: "Schweden Edition",
+        tournament_sweden_desc: "Das schwedische Sommerturnier-Design im sportlichen College-Stil.",
+        tournament_norway_title: "Norwegen Edition",
+        tournament_norway_desc: "Das norwegische Sommerturnier-Design im sportlichen College-Stil.",
+        btn_discover_drop: "Drop Entdecken",
+        coll_tournament_tag: "Limited Summer Drop",
+        coll_tournament_title: "Summer Tournament Fan Edition",
+        coll_tournament_desc: "Die exklusiven Fan-Editionen für Deutschland, Schweden und Norwegen. Minimalistisches, nordisch inspiriertes College-Design für das Sommerturnier.",
+        coll_tournament_btn: "Fan-Editionen ansehen",
         shop_tag: "Offizieller Store",
         shop_title: "nørvale Online-Shop",
         shop_desc: "Bestelle unsere Kollektionen direkt über den eingebetteten Store. Sicher, schnell und direkt geliefert.",
@@ -761,6 +780,21 @@ const translations = {
         badge_essential: "Essential",
         badge_premium: "Premium",
         badge_new: "New",
+        badge_limited: "Limited",
+        tournament_home_tag: "Limited Drop",
+        tournament_home_title: "Summer Fan Edition",
+        tournament_home_desc: "Support your team in pure Nordic style. Limited, minimalist, and sustainably crafted.",
+        tournament_germany_title: "Germany Edition",
+        tournament_germany_desc: "The German summer tournament design in an athletic college style.",
+        tournament_sweden_title: "Sweden Edition",
+        tournament_sweden_desc: "The Swedish summer tournament design in an athletic college style.",
+        tournament_norway_title: "Norway Edition",
+        tournament_norway_desc: "The Norwegian summer tournament design in an athletic college style.",
+        btn_discover_drop: "Discover Drop",
+        coll_tournament_tag: "Limited Summer Drop",
+        coll_tournament_title: "Summer Tournament Fan Edition",
+        coll_tournament_desc: "The exclusive fan editions for Germany, Sweden, and Norway. Minimalist, Nordic-inspired college design for the summer tournament.",
+        coll_tournament_btn: "Explore Fan Editions",
         shop_tag: "Official Store",
         shop_title: "nørvale Online Shop",
         shop_desc: "Order our collections directly through the embedded store. Secure, fast, and delivered straight to you.",

@@ -176,6 +176,25 @@ Da der Spreadshop auf deiner Seite über ein geschütztes **Iframe** eingebunden
     box-shadow: none !important;
 }
 
+/* Mobil-Optimierung: Ausblenden der breiten Navigationsbalken neben den Bildern, die auf Mobilgeräten alles blockieren */
+@media (max-width: 768px) {
+    #myShop .sprd-detail-stage__next,
+    #myShop .sprd-detail-stage__prev,
+    #myShop [class*="detail-stage__next"],
+    #myShop [class*="detail-stage__prev"],
+    #myShop [class*="stage__next"],
+    #myShop [class*="stage__prev"],
+    #myShop [class*="slider__button"],
+    #myShop [class*="carousel__button"],
+    #myShop [class*="button--next"],
+    #myShop [class*="button--prev"] {
+        display: none !important;
+        width: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+}
+
 /* 5. Pagination und Seitenlimit-Auswahl (entfernt überlappende schwarze Blöcke) */
 #myShop [class*="pagination"],
 #myShop [class*="pagination"] *,

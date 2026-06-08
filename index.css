@@ -1400,11 +1400,11 @@ blockquote {
 }
 
 /* 2. Premium Buttons (override default orange/yellow/blue buttons) */
-#myShop .sprd-btn:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
-#myShop .sprd-button:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
-#myShop button[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
-#myShop a[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]),
-#myShop [class*="button"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="navigation"]),
+#myShop .sprd-btn:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]),
+#myShop .sprd-button:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]),
+#myShop button[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]),
+#myShop a[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]),
+#myShop [class*="button"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="slider"]):not([class*="carousel"]),
 #myShop [class*="startpage__button"] {
     background-color: var(--color-text-primary) !important;
     color: var(--color-white) !important;
@@ -1422,11 +1422,11 @@ blockquote {
     display: inline-block !important;
 }
 
-#myShop .sprd-btn:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
-#myShop .sprd-button:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
-#myShop button[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
-#myShop a[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):hover,
-#myShop [class*="button"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="navigation"]):hover,
+#myShop .sprd-btn:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]):hover,
+#myShop .sprd-button:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]):hover,
+#myShop button[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]):hover,
+#myShop a[class*="btn"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="slider"]):not([class*="carousel"]):hover,
+#myShop [class*="button"]:not([class*="pagination"]):not([class*="limit"]):not([class*="size"]):not([class*="arrow"]):not([class*="chevron"]):not([class*="control"]):not([class*="navigation"]):not([class*="stage"]):not([class*="next"]):not([class*="prev"]):not([class*="slider"]):not([class*="carousel"]):hover,
 #myShop [class*="startpage__button"]:hover {
     background-color: transparent !important;
     color: var(--color-text-primary) !important;
@@ -1580,7 +1580,56 @@ blockquote {
     color: var(--color-text-primary) !important;
 }
 
-/* 8. Pagination and Page Size selectors at the bottom of the shop grid */
+/* 8. Reset und Optimierung für Slider- und Karussell-Navigationspfeile (entfernt Boxen an den Seiten) */
+#myShop .sprd-detail-stage__next,
+#myShop .sprd-detail-stage__prev,
+#myShop [class*="stage__next"],
+#myShop [class*="stage__prev"],
+#myShop [class*="slider__button"],
+#myShop [class*="carousel__button"],
+#myShop [class*="button--next"],
+#myShop [class*="button--prev"],
+#myShop [class*="arrow"],
+#myShop [class*="chevron"],
+#myShop [class*="control"] {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#myShop .sprd-detail-stage__next *,
+#myShop .sprd-detail-stage__prev *,
+#myShop [class*="stage__next"] *,
+#myShop [class*="stage__prev"] *,
+#myShop [class*="slider__button"] *,
+#myShop [class*="carousel__button"] * {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Mobil-Optimierung: Ausblenden der breiten Navigationsbalken neben den Bildern, die auf Mobilgeräten alles blockieren */
+@media (max-width: 768px) {
+    #myShop .sprd-detail-stage__next,
+    #myShop .sprd-detail-stage__prev,
+    #myShop [class*="detail-stage__next"],
+    #myShop [class*="detail-stage__prev"],
+    #myShop [class*="stage__next"],
+    #myShop [class*="stage__prev"],
+    #myShop [class*="slider__button"],
+    #myShop [class*="carousel__button"],
+    #myShop [class*="button--next"],
+    #myShop [class*="button--prev"] {
+        display: none !important;
+        width: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+}
+
+/* 9. Pagination and Page Size selectors at the bottom of the shop grid */
 #myShop [class*="pagination"],
 #myShop [class*="pagination"] *,
 #myShop [class*="page-size"],
@@ -2240,6 +2289,116 @@ blockquote {
         font-size: 1.8rem;
     }
 }
+
+/* --- Special Summer Tournament Drop Section --- */
+.tournament-drop-section {
+    padding: 6rem 0;
+    background-color: var(--color-bg-primary);
+}
+
+.tournament-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .tournament-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tournament-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.tournament-card {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+}
+
+.tournament-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tournament-card:hover .tournament-card-image {
+    transform: scale(1.05);
+}
+
+.tournament-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(28,27,26,0.85) 0%, rgba(28,27,26,0.3) 50%, rgba(28,27,26,0.1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: var(--color-white);
+}
+
+.tournament-card-tag {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #e6c8a2; /* Soft gold/bronze color to stand out */
+    margin-bottom: 0.5rem;
+}
+
+.tournament-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.tournament-card-desc {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* --- Limited Badge Styling --- */
+.badge.badge-limited {
+    background-color: var(--color-text-primary);
+    color: #e6c8a2;
+    border: 1px solid #e6c8a2;
+}
+
+/* Limited Collection Hero Card Highlights */
+.collection-hero-card.limited-collection-hero {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    padding: 3rem;
+    border-radius: var(--border-radius-md);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.01);
+}
+
+@media (max-width: 900px) {
+    .collection-hero-card.limited-collection-hero {
+        padding: 2rem;
+    }
+}
+
+
 
 
 
