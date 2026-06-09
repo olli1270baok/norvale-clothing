@@ -723,6 +723,10 @@
                                 <p><a href="mailto:olli1270@gmail.com">olli1270@gmail.com</a></p>
                             </div>
                             <div class="contact-detail-item">
+                                <h4 data-i18n="contact_detail_label_phone">Telefon</h4>
+                                <p><a href="tel:+4917684128588">+49 (0) 176 84128588</a></p>
+                            </div>
+                            <div class="contact-detail-item">
                                 <h4 data-i18n="contact_detail_label_hours">Support-Zeiten</h4>
                                 <p data-i18n="contact_detail_val_hours">Montag – Freitag: 09:00 – 17:00 Uhr</p>
                             </div>
@@ -760,6 +764,7 @@
             <div class="container section legal-container">
                 <div class="legal-tabs">
                     <button class="legal-tab-btn active" data-legal-section="imprint" data-i18n="legal_tab_imprint">Impressum</button>
+                    <button class="legal-tab-btn" data-legal-section="shipping-returns" data-i18n="legal_tab_shipping_returns">Versand & Rückgabe</button>
                     <button class="legal-tab-btn" data-legal-section="privacy" data-i18n="legal_tab_privacy">Datenschutz</button>
                     <button class="legal-tab-btn" data-legal-section="terms" data-i18n="legal_tab_terms">AGB</button>
                 </div>
@@ -767,6 +772,11 @@
                 <div class="legal-content-wrapper">
                     <!-- Impressum Content -->
                     <div id="legal-section-imprint" class="legal-section-content active" data-i18n="legal_imprint_content">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- Versand & Rückgabe Content -->
+                    <div id="legal-section-shipping-returns" class="legal-section-content" data-i18n="legal_shipping_returns_content">
                         <!-- Populated dynamically -->
                     </div>
 
@@ -877,6 +887,7 @@
             <div class="container footer-bottom-flex">
                 <p class="copyright" data-i18n="footer_copyright">&copy; 2026 nørvale clothing. Alle Rechte vorbehalten.</p>
                 <div class="legal-links">
+                    <a href="#shipping-returns" data-target="legal-view" data-i18n="footer_shipping_returns">Versand & Rückgabe</a>
                     <a href="#privacy" data-target="legal-view" data-i18n="footer_privacy">Datenschutz</a>
                     <a href="#terms" data-target="legal-view" data-i18n="footer_terms">AGB</a>
                     <a href="#imprint" data-target="legal-view" data-i18n="footer_imprint">Impressum</a>
