@@ -910,19 +910,18 @@
     <!-- Client-Side App Logic -->
     <script src="index.js"></script>
 
-    <!-- Google Kundenrezensionen Badge -->
-    <script src="https://apis.google.com/js/platform.js?onload=renderBadge" async defer></script>
+    <!-- Google Merchant Store Widget -->
+    <script id="merchantWidgetScript" src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" defer></script>
     <script>
-      window.renderBadge = function() {
-        var ratingbadgeContainer = document.createElement("div");
-        document.body.appendChild(ratingbadgeContainer);
-        window.gapi.load('ratingbadge', function() {
-          window.gapi.ratingbadge.render(ratingbadgeContainer, {
-            "merchant_id": 5803942295,
-            "position": "BOTTOM_RIGHT"
-          });
+      merchantWidgetScript.addEventListener('load', function () {
+        merchantwidget.start({
+          // REQUIRED FIELDS
+          merchant_id: 5803942295,
+
+          // OPTIONAL FIELDS
+          position: 'RIGHT_BOTTOM'
         });
-      }
+      });
     </script>
 </body>
 </html>
