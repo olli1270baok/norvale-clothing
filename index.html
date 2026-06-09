@@ -909,5 +909,20 @@
 
     <!-- Client-Side App Logic -->
     <script src="index.js"></script>
+
+    <!-- Google Kundenrezensionen Badge -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderBadge" async defer></script>
+    <script>
+      window.renderBadge = function() {
+        var ratingbadgeContainer = document.createElement("div");
+        document.body.appendChild(ratingbadgeContainer);
+        window.gapi.load('ratingbadge', function() {
+          window.gapi.ratingbadge.render(ratingbadgeContainer, {
+            "merchant_id": 5803942295,
+            "position": "BOTTOM_RIGHT"
+          });
+        });
+      }
+    </script>
 </body>
 </html>
